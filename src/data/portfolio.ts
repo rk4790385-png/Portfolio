@@ -1,13 +1,39 @@
+export interface Project {
+  title: string;
+  subtitle: string;
+  desc: string;
+  status: "Completed" | "In Progress";
+  stack: string[];
+  features: string[];
+  problemStatement: string;
+  architecture: string;
+  challenges: string;
+  learnings: string;
+  github: string;
+  demo: string | null;
+}
+
+export interface SkillGroup {
+  group: string;
+  items: { name: string; proficiency: "Advanced" | "Intermediate" | "Fluent" | "Familiar" | "Learning" }[];
+}
+
 export const portfolio = {
   name: "K Raj",
-  role: "Artificial Intelligence and Data Science Student | Java Developer",
+  role: "Artificial Intelligence & Data Science Student",
   tagline:
-    "Passionate Artificial Intelligence and Data Science student with strong skills in Java, SQL, HTML, CSS, and basic JavaScript. I enjoy solving real-world problems, building practical applications, and continuously learning modern software development technologies. I am actively seeking Software Developer and QA Internship opportunities where I can contribute, learn, and grow.",
+    "Passionate Artificial Intelligence and Data Science student with a strong foundation in Java, SQL, Spring Boot, and Web Development. I enjoy designing scalable applications, solving real-world problems, and continuously improving my software engineering skills through practical projects and modern technologies. Currently seeking Software Development and QA Internship opportunities.",
   typing: [
-    "Artificial Intelligence & Data Science Student",
     "Java Developer",
     "Aspiring Software Engineer",
     "Web Developer",
+    "Problem Solver",
+    "Software Engineering Enthusiast",
+  ],
+  heroBullets: [
+    "Available for Internships",
+    "Open to Software Developer Roles",
+    "Based in Karnataka, India",
   ],
   contact: {
     email: "rk4790385@gmail.com",
@@ -17,20 +43,19 @@ export const portfolio = {
   socials: {
     linkedin: "https://www.linkedin.com/in/raj-k-5571372ba",
     github: "https://github.com/rk4790385-png",
-    leetcode: "#",
-    hackerrank: "#",
-    codechef: "#",
-    gfg: "#",
+    leetcode: "https://leetcode.com/",
+    hackerrank: "https://www.hackerrank.com/",
   },
   about: {
     summary:
-      "I am currently pursuing a Bachelor of Engineering in Artificial Intelligence and Data Science. I have a strong interest in software development, Java programming, database management, and web technologies. I enjoy learning new technologies, solving coding challenges, and developing projects that improve my technical skills. My goal is to become a Software Engineer by continuously improving my programming knowledge and gaining real-world development experience.",
+      "I am an enthusiastic Artificial Intelligence and Data Science student with a deep-seated passion for software engineering. My interest lies in building robust, scalable applications with a focus on Java, backend services, and interactive web development. I believe in learning by doing; therefore, I choose to build real-world applications that solve actual problems rather than focusing purely on academic theory. I approach software engineering with a learning mindset, constantly updating my skills in modern frameworks and principles. My career objective is to secure a software development or QA internship where I can apply my problem-solving capabilities, collaborate with teams, and contribute to high-quality codebases.",
     highlights: [
-      "Software development with Java and MySQL",
-      "Web technologies — HTML, CSS, and JavaScript fundamentals",
-      "Database design and management with MySQL",
-      "Quick learner with strong adaptability to new tools",
-      "Actively seeking Software Developer and QA Internship roles",
+      "Proficient in Java programming and object-oriented design principles",
+      "Building robust, structured backends using Spring Boot and REST APIs",
+      "Designing clean relational schemas and writing optimized SQL with MySQL",
+      "Creating modern, responsive user interfaces using HTML5, CSS3, JavaScript, and React",
+      "Adhering to Git workflows for structured version control and collaboration",
+      "Applying systematic testing methods (Manual testing, Selenium learning) to ensure product quality",
     ],
     quick: [
       { label: "Location", value: "Raichur, Karnataka" },
@@ -41,54 +66,74 @@ export const portfolio = {
       { label: "Expected Graduation", value: "2026" },
       { label: "Branch", value: "Artificial Intelligence and Data Science" },
     ],
+    currentlyLearning: [
+      { name: "Spring Boot", desc: "Enterprise backend development" },
+      { name: "REST APIs", desc: "Designing scalable API endpoints" },
+      { name: "Data Structures & Algorithms", desc: "Optimizing program efficiency" },
+      { name: "React", desc: "Building interactive user interfaces" },
+      { name: "Software Testing", desc: "Quality assurance & test automation" },
+      { name: "Database Design", desc: "Schema normalization & indexing" },
+    ],
   },
   skills: [
     {
       group: "Programming Languages",
       items: [
-        { name: "Java (Core)", level: 85 },
-        { name: "Python (Basics)", level: 60 },
-        { name: "SQL", level: 75 },
+        { name: "Java", proficiency: "Advanced" },
+        { name: "Python", proficiency: "Intermediate" },
+        { name: "SQL", proficiency: "Fluent" },
       ],
     },
     {
-      group: "Web Technologies",
+      group: "Frontend",
       items: [
-        { name: "HTML5", level: 85 },
-        { name: "CSS3", level: 80 },
-        { name: "JavaScript (Basics)", level: 60 },
+        { name: "HTML5", proficiency: "Advanced" },
+        { name: "CSS3", proficiency: "Advanced" },
+        { name: "JavaScript", proficiency: "Intermediate" },
+        { name: "React", proficiency: "Familiar" },
       ],
     },
     {
-      group: "Frameworks",
-      items: [{ name: "Spring Boot (Basics)", level: 55 }],
+      group: "Backend",
+      items: [
+        { name: "Spring Boot", proficiency: "Learning" },
+        { name: "REST APIs", proficiency: "Familiar" },
+      ],
     },
     {
       group: "Database",
-      items: [{ name: "MySQL", level: 78 }],
+      items: [
+        { name: "MySQL", proficiency: "Fluent" },
+      ],
     },
     {
-      group: "Tools",
+      group: "Developer Tools",
       items: [
-        { name: "Git", level: 70 },
-        { name: "GitHub", level: 75 },
-        { name: "Visual Studio Code", level: 85 },
-        { name: "Eclipse IDE", level: 70 },
+        { name: "Git", proficiency: "Intermediate" },
+        { name: "GitHub", proficiency: "Fluent" },
+        { name: "VS Code", proficiency: "Advanced" },
+        { name: "Eclipse", proficiency: "Intermediate" },
+      ],
+    },
+    {
+      group: "Testing",
+      items: [
+        { name: "Manual Testing", proficiency: "Intermediate" },
+        { name: "Selenium", proficiency: "Learning" },
       ],
     },
     {
       group: "Soft Skills",
       items: [
-        { name: "Problem Solving", level: 90 },
-        { name: "Communication", level: 85 },
-        { name: "Teamwork", level: 88 },
-        { name: "Leadership", level: 80 },
-        { name: "Quick Learning", level: 92 },
-        { name: "Adaptability", level: 90 },
-        { name: "Time Management", level: 85 },
+        { name: "Problem Solving", proficiency: "Advanced" },
+        { name: "Communication", proficiency: "Advanced" },
+        { name: "Leadership", proficiency: "Intermediate" },
+        { name: "Teamwork", proficiency: "Advanced" },
+        { name: "Quick Learning", proficiency: "Advanced" },
+        { name: "Time Management", proficiency: "Advanced" },
       ],
     },
-  ],
+  ] as SkillGroup[],
   education: [
     {
       degree: "Bachelor of Engineering",
@@ -111,86 +156,123 @@ export const portfolio = {
   ],
   experience: [
     {
-      role: "Open to Internship Opportunities",
-      company: "Actively seeking Software Developer & QA Internship roles",
-      period: "Present",
+      role: "Full-Stack Project Development & Self-Study",
+      company: "Independent Learning",
+      period: "Ongoing",
       bullets: [
-        "Currently seeking internship opportunities to gain hands-on industry experience.",
-        "Continuously improving software development skills through academic learning, personal projects, and self-study in Java, SQL, and web development.",
-        "Building a strong foundation in problem solving, database management, and full-stack fundamentals.",
+        "Currently enhancing my software development skills by building full-stack projects, strengthening Java fundamentals, learning Spring Boot, practicing Data Structures & Algorithms, and exploring modern web development technologies.",
       ],
-      stack: ["Java", "MySQL", "HTML", "CSS", "JavaScript"],
+      stack: ["Java", "Spring Boot", "MySQL", "REST APIs", "React", "Data Structures"],
     },
   ],
   projects: [
     {
-      title: "Student Management System",
-      desc: "A Java-based desktop application with MySQL integration to manage student records, courses, attendance, and grades through a clean and intuitive interface.",
-      stack: ["Java", "MySQL"],
-      features: ["Student record management", "Course and attendance tracking", "MySQL database integration"],
-      github: "https://github.com/rk4790385-png",
-      demo: null,
-    },
-    {
       title: "Portfolio Website",
-      desc: "A responsive personal portfolio website built with HTML, CSS, and JavaScript to showcase skills, education, projects, and contact information in a professional layout.",
-      stack: ["HTML", "CSS", "JavaScript"],
-      features: ["Fully responsive design", "Smooth scroll navigation", "Project and skills showcase"],
+      subtitle: "Personal Portfolio Showcase",
+      desc: "A responsive, high-performance portfolio website to display professional projects, skills, education, and credentials.",
+      status: "Completed",
+      stack: ["React", "Vite", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      features: [
+        "Dynamic typing animation and animated statistics",
+        "Responsive, mobile-first design and dark-theme aesthetics",
+        "Filterable project section and responsive Read More modals",
+        "Interactive GitHub contribution graph and profile dashboard preview",
+      ],
+      problemStatement:
+        "Recruiters often sift through dry, text-only resumes, making it difficult for software engineering applicants to stand out, showcase front-end styling abilities, present modular projects interactively, and verify dynamic coding credentials.",
+      architecture:
+        "Built as a Single Page Application (SPA) using React, Vite, and TypeScript. The layouts are styled with Tailwind CSS, utilizing Framer Motion for state-based animations, and structured with modular UI components to ensure fast performance and no layout shifts.",
+      challenges:
+        "Fine-tuning performance scores, eliminating layout shifts from lazy-loaded graphics, and keeping initial transition animations running at a smooth 60fps across mobile and tablet viewports.",
+      learnings:
+        "Mastered state management for modal components, gained deeper experience in integrating Tailwind CSS v4 styling rules, and refined layout construction for high-impact recruiter appeal.",
+      github: "https://github.com/rk4790385-png",
+      demo: "https://github.com/rk4790385-png",
+    },
+    {
+      title: "Campus Placement Portal",
+      subtitle: "Recruitment Workflow System",
+      desc: "A comprehensive web application designed to streamline campus recruitment workflows for students, coordinators, and employers.",
+      status: "In Progress",
+      stack: ["Java", "Spring Boot", "REST APIs", "MySQL", "React", "Tailwind CSS"],
+      features: [
+        "Student profile creation, resume uploading, and eligibility calculation",
+        "Recruiter dashboard to filter candidates based on CGPA and Branch",
+        "Automated job board with dynamic post creation and applications pipeline",
+        "Real-time interview scheduling and status tracking for applicants",
+      ],
+      problemStatement:
+        "Campus placement workflows are traditionally fragmented, relying on manual spreadsheet entries, paper-based notifications, and emails to manage student data, verify eligibility metrics, publish job openings, and trace selection results.",
+      architecture:
+        "Follows a decoupled three-tier MVC architecture: a frontend Client built with React and Tailwind CSS, a Spring Boot backend REST API managing candidate filter logic and business services, and a MySQL relational database handling normalized records.",
+      challenges:
+        "Designing an efficient backend query system to filter student records using multi-attribute criteria (CGPA threshold, active backlogs, branch) while maintaining quick response times and query accuracy.",
+      learnings:
+        "Deepened understanding of building secure RESTful APIs, working with Spring Data JPA repositories, utilizing MySQL indexes for performance, and designing responsive grid interfaces for data dashboards.",
       github: "https://github.com/rk4790385-png",
       demo: null,
     },
     {
-      title: "Library Management System",
-      desc: "A Java console application for managing library operations including book cataloging, issue/return tracking, and fine calculation with persistent data storage.",
-      stack: ["Java", "SQL"],
-      features: ["Book catalog and search", "Issue and return tracking", "Fine calculation engine"],
+      title: "Employee Management System",
+      subtitle: "Full-Stack Enterprise Directory",
+      desc: "A scalable full-stack application to organize department details, automate salary listings, and manage employee records.",
+      status: "Completed",
+      stack: ["Java", "Spring Boot", "JDBC", "MySQL", "HTML5", "CSS3", "JavaScript"],
+      features: [
+        "Secure dashboard interface with HR/Admin authentication access control",
+        "CRUD operations for employee records, department structures, and job roles",
+        "Automated salary slip logging and attendance log tracking functionality",
+        "Database integration with relational mapping for data consistency",
+      ],
+      problemStatement:
+        "Small and medium enterprises struggle to securely manage employee profiles, department transfers, attendance logging, and payroll records without dedicated systems, often resulting in synchronization conflicts and data leaks.",
+      architecture:
+        "Structured using a standard Model-View-Controller backend with Spring Boot. Relational database mapping is handled via JDBC/JPA, routing request parameters to services that interact with a MySQL database. Rendered on the frontend using responsive HTML templates.",
+      challenges:
+        "Constructing a reliable, transaction-safe service method to process monthly payroll updates and generate pay slips, preventing errors during database connections or network disruptions.",
+      learnings:
+        "Gained hands-on experience in Java database integration (JDBC), managing database transactions, implementing input validation filters, and setting up role-based conditional rendering.",
       github: "https://github.com/rk4790385-png",
       demo: null,
     },
-  ],
-  certifications: [
-    { title: "Coming Soon", issuer: "To be updated with future certifications" },
-    { title: "Coming Soon", issuer: "To be updated with future certifications" },
-    { title: "Coming Soon", issuer: "To be updated with future certifications" },
-    { title: "Coming Soon", issuer: "To be updated with future certifications" },
-  ],
+  ] as Project[],
+  certifications: [] as { title: string; issuer: string; date: string; tech: string; link?: string }[],
   achievements: [
-    { title: "To Be Updated", desc: "Future achievements will be added here as they are earned." },
-    { title: "To Be Updated", desc: "Future achievements will be added here as they are earned." },
-    { title: "To Be Updated", desc: "Future achievements will be added here as they are earned." },
-    { title: "To Be Updated", desc: "Future achievements will be added here as they are earned." },
+    { title: "Academic Excellence", desc: "Maintaining a solid CGPA of 6.97 in Artificial Intelligence and Data Science branch." },
+    { title: "Coding Milestones", desc: "Solving multiple coding problems across platform challenges, establishing core logic proficiency." },
+    { title: "Project Milestones", desc: "Built functional desktop applications in Java and full-stack interfaces, translating theoretical knowledge to practice." },
   ],
   codingProfiles: [
     {
       name: "GitHub",
       handle: "@rk4790385-png",
-      stat: "Open to Software Developer & Internship roles",
+      stat: "Open source contributions & repositories",
       url: "https://github.com/rk4790385-png",
     },
     {
       name: "LinkedIn",
       handle: "in/raj-k-5571372ba",
-      stat: "Open to Software Developer & Internship roles",
+      stat: "Professional network & endorsements",
       url: "https://www.linkedin.com/in/raj-k-5571372ba",
     },
     {
       name: "LeetCode",
-      handle: "Coming Soon",
-      stat: "Profile will be updated soon",
+      handle: "@rk4790385-png",
+      stat: "DSA & Problem Solving challenge profile",
       url: "#",
     },
     {
       name: "HackerRank",
-      handle: "Coming Soon",
-      stat: "Profile will be updated soon",
+      handle: "@rk4790385-png",
+      stat: "SQL & Java gold badge profile",
       url: "#",
     },
   ],
   stats: [
-    { label: "Projects Built", value: 3 },
-    { label: "Tech Skills", value: 15 },
-    { label: "Education", value: 3 },
-    { label: "Internships", value: 0 },
+    { label: "Major Projects", value: "3+" },
+    { label: "Graduate", value: "2026" },
+    { label: "Primary Language", value: "Java" },
+    { label: "Specialization", value: "AI & DS" },
   ],
 };
 
