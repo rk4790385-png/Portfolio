@@ -1,14 +1,18 @@
 export interface Project {
+  slug: string;
   title: string;
   subtitle: string;
   desc: string;
   status: "Completed" | "In Progress";
+  role: string;
+  duration: string;
   stack: string[];
   features: string[];
   problemStatement: string;
   architecture: string;
   challenges: string;
   learnings: string;
+  futureImprovements?: string[];
   github: string;
   demo: string | null;
 }
@@ -31,9 +35,11 @@ export const portfolio = {
     "Software Engineering Enthusiast",
   ],
   heroBullets: [
-    "Available for Internships",
-    "Open to Software Developer Roles",
-    "Based in Karnataka, India",
+    "Java Developer",
+    "AI & DS Student",
+    "Open to Internships",
+    "2026 Graduate",
+    "Problem Solver",
   ],
   contact: {
     email: "rk4790385@gmail.com",
@@ -167,15 +173,18 @@ export const portfolio = {
   ],
   projects: [
     {
+      slug: "portfolio-website",
       title: "Portfolio Website",
       subtitle: "Personal Portfolio Showcase",
       desc: "A responsive, high-performance portfolio website to display professional projects, skills, education, and credentials.",
       status: "Completed",
+      role: "Lead Frontend Developer",
+      duration: "Jan 2024 — Present",
       stack: ["React", "Vite", "TypeScript", "Tailwind CSS", "Framer Motion"],
       features: [
         "Dynamic typing animation and animated statistics",
         "Responsive, mobile-first design and dark-theme aesthetics",
-        "Filterable project section and responsive Read More modals",
+        "Filterable project section with dedicated case study pages",
         "Interactive GitHub contribution graph and profile dashboard preview",
       ],
       problemStatement:
@@ -185,15 +194,23 @@ export const portfolio = {
       challenges:
         "Fine-tuning performance scores, eliminating layout shifts from lazy-loaded graphics, and keeping initial transition animations running at a smooth 60fps across mobile and tablet viewports.",
       learnings:
-        "Mastered state management for modal components, gained deeper experience in integrating Tailwind CSS v4 styling rules, and refined layout construction for high-impact recruiter appeal.",
+        "Mastered responsive page design, improved content hierarchy, and refined portfolio storytelling for a premium personal brand experience.",
+      futureImprovements: [
+        "Add accessibility-first keyboard interactions and screen reader support.",
+        "Publish a polished theme toggle with saved preferences.",
+        "Expand the experience with live analytics and recruiter-focused metrics.",
+      ],
       github: "https://github.com/rk4790385-png",
       demo: "https://github.com/rk4790385-png",
     },
     {
+      slug: "campus-placement-portal",
       title: "Campus Placement Portal",
       subtitle: "Recruitment Workflow System",
       desc: "A comprehensive web application designed to streamline campus recruitment workflows for students, coordinators, and employers.",
       status: "In Progress",
+      role: "Full-Stack Developer",
+      duration: "Jul 2024 — Ongoing",
       stack: ["Java", "Spring Boot", "REST APIs", "MySQL", "React", "Tailwind CSS"],
       features: [
         "Student profile creation, resume uploading, and eligibility calculation",
@@ -209,14 +226,21 @@ export const portfolio = {
         "Designing an efficient backend query system to filter student records using multi-attribute criteria (CGPA threshold, active backlogs, branch) while maintaining quick response times and query accuracy.",
       learnings:
         "Deepened understanding of building secure RESTful APIs, working with Spring Data JPA repositories, utilizing MySQL indexes for performance, and designing responsive grid interfaces for data dashboards.",
+      futureImprovements: [
+        "Add role-based access controls and interview notification automations.",
+        "Introduce advanced candidate analytics with trend reports.",
+      ],
       github: "https://github.com/rk4790385-png",
       demo: null,
     },
     {
+      slug: "employee-management-system",
       title: "Employee Management System",
       subtitle: "Full-Stack Enterprise Directory",
       desc: "A scalable full-stack application to organize department details, automate salary listings, and manage employee records.",
       status: "Completed",
+      role: "Backend Developer",
+      duration: "Apr 2024 — Jun 2024",
       stack: ["Java", "Spring Boot", "JDBC", "MySQL", "HTML5", "CSS3", "JavaScript"],
       features: [
         "Secure dashboard interface with HR/Admin authentication access control",
@@ -232,6 +256,40 @@ export const portfolio = {
         "Constructing a reliable, transaction-safe service method to process monthly payroll updates and generate pay slips, preventing errors during database connections or network disruptions.",
       learnings:
         "Gained hands-on experience in Java database integration (JDBC), managing database transactions, implementing input validation filters, and setting up role-based conditional rendering.",
+      futureImprovements: [
+        "Add employee self-service profile updates and approval workflows.",
+        "Implement paginated search and dynamic reporting panels.",
+      ],
+      github: "https://github.com/rk4790385-png",
+      demo: null,
+    },
+    {
+      slug: "hospital-management-system",
+      title: "Hospital Management System",
+      subtitle: "Healthcare Administration Platform",
+      desc: "An enterprise-grade hospital management system built to coordinate patient care, staff scheduling, and clinical documentation.",
+      status: "Completed",
+      role: "System Architect",
+      duration: "Feb 2024 — May 2024",
+      stack: ["Java", "Spring Boot", "MySQL", "REST APIs", "HTML5", "CSS3", "JavaScript"],
+      features: [
+        "Patient registration, appointment scheduling, and doctor allocation",
+        "Secure administrative dashboard with bed and staff management",
+        "Automated billing and invoice generation for treatment cycles",
+        "Role-based access controls for doctors, nurses, and administrators",
+      ],
+      problemStatement:
+        "Hospitals often manage patient details, appointments, and billing through disconnected spreadsheets and manual workflows, causing delays in care coordination, admission tracking, and financial reconciliation.",
+      architecture:
+        "Designed as a RESTful backend using Spring Boot with MySQL for relational data persistence. The frontend uses responsive HTML and JavaScript templates to deliver a dependable, accessible hospital admin experience.",
+      challenges:
+        "Synchronizing patient, appointment, and billing data while preserving consistency across multiple user roles and workflow states.",
+      learnings:
+        "Strengthened service design for multi-role systems, learned to implement secure REST abstractions, and improved data integrity handling for healthcare operations.",
+      futureImprovements: [
+        "Integrate notifications for patient reminders and doctor schedule updates.",
+        "Add analytics dashboards for occupancy, revenue, and patient throughput.",
+      ],
       github: "https://github.com/rk4790385-png",
       demo: null,
     },

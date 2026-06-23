@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import {
   Github,
@@ -22,8 +22,8 @@ import {
   Building2,
   Search,
   Menu,
-  X,
 } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import profileImg from "@/assets/profile.jpg";
 import { portfolio } from "@/data/portfolio";
 import { Button } from "@/components/ui/button";
@@ -78,7 +78,7 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="relative scroll-mt-24 py-20 sm:py-28">
+    <section id={id} className="relative scroll-mt-24 py-24 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -88,12 +88,12 @@ function Section({
           className="mb-10 sm:mb-14"
         >
           {eyebrow && (
-            <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-              <Sparkles className="h-3.5 w-3.5 text-accent" /> {eyebrow}
+            <div className="mb-4 inline-flex items-center gap-3 rounded-full border border-border bg-background/70 px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-muted-foreground/80">
+              <Sparkles className="h-4 w-4 text-accent" /> {eyebrow}
             </div>
           )}
-          <h2 className="text-3xl font-bold sm:text-5xl">
-            <span className="gradient-text">{title}</span>
+          <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.02em] text-foreground sm:text-5xl">
+            {title}
           </h2>
         </motion.div>
         {children}
@@ -115,50 +115,37 @@ function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "py-2" : "py-4"
+      className={`fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-xl transition-all duration-300 ${
+        scrolled ? "py-3 shadow-xl shadow-black/10" : "py-4"
       }`}
     >
-      <div
-        className={`mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-2xl px-4 sm:px-6 transition-all ${
-          scrolled ? "glass shadow-lg" : ""
-        }`}
-      >
-        <a href="#home" className="flex items-center gap-2 py-3 font-display text-lg font-bold">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-primary to-secondary text-primary-foreground">
-            KR
-          </span>
-          <span className="hidden sm:inline">K Raj<span className="text-accent">.dev</span></span>
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+        <a href="#home" className="flex items-center gap-3 font-display text-sm uppercase tracking-[0.24em] text-foreground/90">
+          <span className="grid h-10 w-10 place-items-center rounded-2xl bg-foreground text-black font-bold">KR</span>
+          <span className="hidden sm:inline">K Raj</span>
         </a>
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-4 text-sm uppercase tracking-[0.18em] text-muted-foreground/80">
           {NAV.map((n) => (
             <a
               key={n.id}
               href={`#${n.id}`}
-              className={`relative rounded-full px-3 py-2 text-sm transition-colors ${
+              className={`relative transition-colors ${
                 active === n.id
-                  ? "text-foreground"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "text-foreground after:absolute after:-bottom-3 after:left-1/2 after:h-0.5 after:w-8 after:-translate-x-1/2 after:rounded-full after:bg-accent"
+                  : "hover:text-foreground"
               }`}
             >
               {n.label}
-              {active === n.id && (
-                <motion.span
-                  layoutId="nav-pill"
-                  className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 ring-1 ring-primary/30"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
             </a>
           ))}
         </nav>
-        <div className="flex items-center gap-2">
-          <Button asChild size="sm" className="hidden sm:inline-flex bg-gradient-to-r from-primary to-secondary text-primary-foreground shadow-[var(--shadow-elegant)] hover:opacity-95">
+        <div className="flex items-center gap-3">
+          <Button asChild size="sm" className="hidden sm:inline-flex rounded-full bg-accent text-black shadow-[0_20px_50px_-30px_rgba(249,115,22,0.65)] hover:opacity-95">
             <a href="#contact">Contact Me</a>
           </Button>
           <button
             aria-label="Toggle menu"
-            className="grid h-10 w-10 place-items-center rounded-xl border border-border bg-card/40 lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-2xl border border-border bg-card/80 lg:hidden"
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -173,16 +160,14 @@ function Nav() {
             exit={{ opacity: 0, y: -8 }}
             className="mx-auto mt-2 max-w-6xl px-4 lg:hidden"
           >
-            <div className="glass grid grid-cols-2 gap-1 rounded-2xl p-3">
+            <div className="rounded-3xl border border-border/80 bg-card/90 p-4 shadow-2xl">
               {NAV.map((n) => (
                 <a
                   key={n.id}
                   href={`#${n.id}`}
                   onClick={() => setOpen(false)}
-                  className={`rounded-xl px-3 py-2 text-sm ${
-                    active === n.id
-                      ? "bg-gradient-to-r from-primary/25 to-secondary/25 text-foreground"
-                      : "text-muted-foreground"
+                  className={`block rounded-2xl px-4 py-3 text-sm transition-colors ${
+                    active === n.id ? "bg-background text-foreground" : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {n.label}
@@ -266,98 +251,91 @@ function StatCard({ label, value }: { label: string; value: string }) {
 
 function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden pt-32 sm:pt-40">
+    <section id="home" className="relative overflow-hidden py-28 sm:py-36">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10"
-        style={{ background: "var(--gradient-glow)" }}
+        style={{ background: "radial-gradient(circle at 20% 20%, rgba(249,115,22,0.14), transparent 28%), radial-gradient(circle at 85% 10%, rgba(16,185,129,0.12), transparent 30%)" }}
       />
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_1.2fr]">
+      <div className="mx-auto grid max-w-6xl items-center gap-16 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr]">
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative order-1 mx-auto w-full max-w-sm lg:order-none"
+          className="space-y-6"
         >
-          <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-primary/40 via-secondary/40 to-accent/30 blur-2xl" />
-          <div className="glass relative overflow-hidden rounded-[2rem] p-2">
+          <div className="inline-flex items-center gap-3 rounded-full border border-border/80 bg-background/80 px-4 py-2 text-xs uppercase tracking-[0.28em] text-muted-foreground/80 shadow-[0_15px_60px_-45px_rgba(0,0,0,0.45)]">
+            <span className="h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_0_6px_rgba(249,115,22,0.12)]" />
+            Creative Software Engineer
+          </div>
+
+          <div className="max-w-3xl space-y-6">
+            <p className="text-sm uppercase tracking-[0.4em] text-muted-foreground/70">Hello, I’m</p>
+            <h1 className="text-5xl font-semibold leading-tight tracking-[-0.04em] sm:text-6xl">
+              {portfolio.name}
+            </h1>
+            <div className="space-y-4">
+              <p className="text-sm uppercase tracking-[0.28em] text-accent/90">I’m currently</p>
+              <p className="text-2xl font-semibold leading-snug text-foreground sm:text-3xl">
+                <TypingText words={portfolio.typing} />
+              </p>
+              <p className="text-base sm:text-lg leading-relaxed text-muted-foreground/80 max-w-2xl">
+                {portfolio.tagline}
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {portfolio.heroBullets.map((bullet) => (
+              <motion.div
+                key={bullet}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="rounded-3xl border border-border bg-card/80 px-5 py-4 text-sm text-foreground shadow-[0_18px_70px_-46px_rgba(0,0,0,0.5)]"
+              >
+                <span className="block text-xs uppercase tracking-[0.28em] text-muted-foreground/70">{bullet}</span>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap gap-4">
+            <Button asChild size="lg" className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-black shadow-[0_24px_45px_-25px_rgba(249,115,22,0.8)] hover:opacity-95">
+              <a href="/resume.pdf" download>
+                <Download className="mr-2 h-4 w-4" /> Download Resume
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="rounded-full border border-border bg-background/70 px-6 py-3 text-sm text-foreground hover:border-accent/70">
+              <a href="#projects">
+                <FolderGit2 className="mr-2 h-4 w-4" /> View Projects
+              </a>
+            </Button>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="relative mx-auto w-full max-w-lg"
+        >
+          <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-accent/15 via-transparent to-transparent blur-3xl" />
+          <div className="relative overflow-hidden rounded-[2rem] border border-border/80 bg-card/80 p-1 shadow-[0_25px_75px_-35px_rgba(0,0,0,0.45)]">
             <img
               src={profileImg}
               alt="Portrait of K Raj"
               width={1024}
               height={1024}
-              className="aspect-square w-full rounded-[1.6rem] object-cover"
+              className="aspect-[4/5] w-full rounded-[1.75rem] object-cover"
             />
           </div>
-          <div className="animate-float absolute -bottom-4 -right-4 glass rounded-2xl px-4 py-3 text-sm shadow-[var(--shadow-glow)]">
-            <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-success animate-pulse" />
-              <span className="text-muted-foreground font-medium">Open to work</span>
-            </div>
+          <div className="absolute left-1/2 top-0 -translate-x-1/2 rounded-full bg-white/5 px-4 py-3 text-xs uppercase tracking-[0.3em] text-foreground shadow-xl shadow-black/10 backdrop-blur-xl">
+            {portfolio.role}
           </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-        >
-          <div className="flex flex-col gap-1">
-            <p className="text-sm uppercase tracking-[0.25em] text-muted-foreground">
-              Hi, I'm
-            </p>
-            <h1 className="mt-2 text-4xl font-extrabold leading-tight sm:text-6xl text-foreground">
-              {portfolio.name}
-            </h1>
-            <p className="mt-1 text-sm font-semibold text-accent uppercase tracking-wider">
-              {portfolio.role}
-            </p>
-          </div>
-          <p className="mt-3 text-xl sm:text-2xl">
-            I'm a <TypingText words={portfolio.typing} />
-          </p>
-          <p className="mt-5 max-w-xl text-sm sm:text-base text-muted-foreground leading-relaxed">{portfolio.tagline}</p>
-
-          {/* Hero bullets */}
-          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-muted-foreground/95">
-            {portfolio.heroBullets.map((bullet) => (
-              <span key={bullet} className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-success animate-pulse" />
-                {bullet}
-              </span>
-            ))}
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground shadow-[var(--shadow-elegant)] transition-transform hover:-translate-y-0.5">
-              <a href="/resume.pdf" download>
-                <Download className="mr-2 h-4 w-4" /> Download Resume
-              </a>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="border-border bg-card/40 transition-transform hover:-translate-y-0.5">
-              <a href="#projects">
-                <FolderGit2 className="mr-2 h-4 w-4" /> View Projects
-              </a>
-            </Button>
-            <Button asChild size="lg" variant="ghost" className="transition-transform hover:-translate-y-0.5">
-              <a href="#contact">
-                <Send className="mr-2 h-4 w-4" /> Contact Me
-              </a>
-            </Button>
-          </div>
-
-          <div className="mt-7 flex flex-wrap items-center gap-3 text-muted-foreground">
-            <SocialIcon href={portfolio.socials.linkedin} label="LinkedIn"><Linkedin className="h-4 w-4" /></SocialIcon>
-            <SocialIcon href={portfolio.socials.github} label="GitHub"><Github className="h-4 w-4" /></SocialIcon>
-            <SocialIcon href={portfolio.socials.leetcode} label="LeetCode"><Code2 className="h-4 w-4" /></SocialIcon>
-            <SocialIcon href={portfolio.socials.hackerrank} label="HackerRank"><Trophy className="h-4 w-4" /></SocialIcon>
-            <SocialIcon href={`mailto:${portfolio.contact.email}`} label="Email"><Mail className="h-4 w-4" /></SocialIcon>
-          </div>
-
-          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {portfolio.stats.map((s) => (
-              <StatCard key={s.label} {...s} />
-            ))}
+          <div className="absolute -bottom-5 right-6 rounded-3xl border border-border/70 bg-background/90 px-4 py-3 text-sm shadow-[0_20px_70px_-35px_rgba(0,0,0,0.5)]">
+            <div className="font-semibold text-accent">Open to Internships</div>
+            <div className="text-xs text-muted-foreground/80">2026 Graduate · Problem Solver</div>
           </div>
         </motion.div>
       </div>
@@ -380,74 +358,131 @@ function SocialIcon({ href, label, children }: { href: string; label: string; ch
 }
 
 function About() {
-  return (
-    <Section id="about" eyebrow="About me" title="A short intro">
-      <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="glass rounded-3xl p-8"
-        >
-          <p className="text-base sm:text-lg text-foreground/90 leading-relaxed">{portfolio.about.summary}</p>
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-            {portfolio.about.highlights.map((h) => (
-              <li key={h} className="flex items-start gap-2 text-sm text-muted-foreground">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-primary to-secondary" />
-                <span>{h}</span>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-          {portfolio.about.quick.map((q, i) => {
-            const icons = [MapPin, GraduationCap, Building2, Mail, Phone, Calendar, Sparkles];
-            const Ico = icons[i] ?? Sparkles;
-            return (
-              <motion.div
-                key={q.label}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
-                whileHover={{ y: -0.5 }}
-                className="glass flex items-center gap-3 rounded-2xl p-4 transition-transform hover:-translate-y-0.5"
-              >
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-primary/30 to-secondary/30 text-foreground">
-                  <Ico className="h-4 w-4" />
-                </span>
-                <div className="min-w-0">
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground">{q.label}</div>
-                  <div className="truncate text-sm">{q.value}</div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
+  const journey = [
+    {
+      title: "SSLC",
+      subtitle: "Vidhya Bharathi CBSE School",
+      period: "2019 — 2020",
+      note: "Built the foundation of analytical thinking and problem solving.",
+    },
+    {
+      title: "Pre-University",
+      subtitle: "Justice Shivaraj Patil PU College",
+      period: "2020 — 2022",
+      note: "Focused on mathematics, computer science, and applied logic.",
+    },
+    {
+      title: "Engineering",
+      subtitle: "Government Engineering College, Bidar",
+      period: "2022 — 2026",
+      note: "Studying AI, data science, and building real-world software systems.",
+    },
+    {
+      title: "Projects",
+      subtitle: "Portfolio, Campus Placement Portal, EMS",
+      period: "2024 — Present",
+      note: "Designing premium user experiences and end-to-end applications.",
+    },
+    {
+      title: "Internship Goals",
+      subtitle: "Software Development & QA",
+      period: "2026",
+      note: "Seeking industry mentorship, hands-on backend work, and QA exposure.",
+    },
+  ];
 
-      {/* Currently Learning Section */}
-      <div className="mt-12">
-        <h3 className="mb-6 text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground text-center">
-          Currently Learning
-        </h3>
-        <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
-          {portfolio.about.currentlyLearning.map((item, idx) => (
-            <motion.div
-              key={item.name}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.05 }}
-              whileHover={{ y: -4 }}
-              className="glass flex flex-col justify-between rounded-xl p-4 text-center border-t-2 border-t-primary/40 hover:border-primary/60 transition-all"
-            >
-              <span className="font-semibold text-xs sm:text-sm text-foreground">{item.name}</span>
-              <span className="text-[10px] text-muted-foreground mt-2">{item.desc}</span>
-            </motion.div>
-          ))}
-        </div>
+  return (
+    <Section id="about" eyebrow="About me" title="Story & journey">
+      <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr]">
+        <motion.div
+          initial={{ opacity: 0, x: -16 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-card/80 p-6 shadow-[0_40px_90px_-50px_rgba(0,0,0,0.5)]"
+        >
+          <div className="absolute right-0 top-0 h-24 w-24 rounded-full bg-accent/10 blur-3xl" />
+          <div className="absolute left-5 top-6 h-14 w-14 rounded-full border border-accent/20 bg-accent/5" />
+          <div className="relative overflow-hidden rounded-[1.75rem] border border-border/60 bg-black/20">
+            <img
+              src={profileImg}
+              alt="Portrait of K Raj"
+              width={1024}
+              height={1024}
+              className="aspect-[4/5] w-full object-cover"
+            />
+          </div>
+          <div className="mt-6 space-y-4">
+            <div className="rounded-3xl border border-border/70 bg-background/90 p-4">
+              <p className="text-xs uppercase tracking-[0.32em] text-muted-foreground/80">Current focus</p>
+              <p className="mt-3 text-sm leading-relaxed text-foreground/90">
+                {portfolio.about.summary}
+              </p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {portfolio.about.quick.map((item) => (
+                <div key={item.label} className="rounded-3xl border border-border/60 bg-background/80 p-4">
+                  <div className="text-xs uppercase tracking-[0.28em] text-muted-foreground/70">{item.label}</div>
+                  <div className="mt-2 text-sm font-semibold text-foreground">{item.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 16 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.05 }}
+          className="space-y-8"
+        >
+          <div className="space-y-4">
+            <p className="text-sm uppercase tracking-[0.28em] text-accent/90">My approach</p>
+            <h3 className="max-w-2xl text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
+              I build thoughtful software with clean structure, clarity, and real-world impact.
+            </h3>
+            <div className="space-y-3 text-sm leading-relaxed text-muted-foreground/90">
+              <p>{portfolio.about.highlights[0]}</p>
+              <p>{portfolio.about.highlights[1]}</p>
+              <p>{portfolio.about.highlights[2]}</p>
+            </div>
+          </div>
+
+          <div className="grid gap-4">
+            {portfolio.about.highlights.slice(3).map((highlight) => (
+              <div key={highlight} className="rounded-3xl border border-border/60 bg-background/80 p-5 text-sm text-foreground/90">
+                <div className="mb-2 text-xs uppercase tracking-[0.28em] text-muted-foreground/70">Highlight</div>
+                <p>{highlight}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="rounded-[2rem] border border-border/70 bg-card/85 p-6">
+            <div className="mb-6 flex items-center justify-between gap-4">
+              <div>
+                <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground/70">Career timeline</p>
+                <h4 className="text-2xl font-semibold text-foreground">From school to projects to future goals</h4>
+              </div>
+            </div>
+            <div className="space-y-4">
+              {journey.map((item) => (
+                <div key={item.title} className="group grid gap-2 rounded-3xl border border-border/60 bg-background/70 p-4 transition hover:border-accent/50">
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="text-base font-semibold text-foreground">{item.title}</p>
+                      <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground/80">{item.period}</p>
+                    </div>
+                    <div className="rounded-full border border-border bg-card/80 px-3 py-1 text-[10px] uppercase tracking-[0.3em] text-muted-foreground/80">
+                      {item.subtitle}
+                    </div>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground/90">{item.note}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
     </Section>
   );
@@ -456,7 +491,7 @@ function About() {
 function Skills() {
   return (
     <Section id="skills" eyebrow="Tech stack" title="Skills & toolbox">
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-8 lg:grid-cols-2">
         {portfolio.skills.map((g, gi) => (
           <motion.div
             key={g.group}
@@ -464,32 +499,36 @@ function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: gi * 0.05 }}
-            className="glass rounded-2xl p-6 hover:border-primary/20 transition-colors"
+            className="rounded-[2rem] border border-border/70 bg-background/70 p-6 shadow-[0_30px_80px_-55px_rgba(0,0,0,0.5)]"
           >
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground border-b border-border/50 pb-2">
-              {g.group}
-            </h3>
-            <div className="flex flex-wrap gap-2">
+            <div className="mb-4 flex items-center justify-between gap-4">
+              <div>
+                <p className="text-sm font-semibold text-foreground">{g.group}</p>
+                <p className="mt-1 text-xs uppercase tracking-[0.28em] text-muted-foreground/70">Core competencies</p>
+              </div>
+              <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.32em] text-accent">
+                {g.items.length} skills
+              </span>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
               {g.items.map((s) => (
-                <div
+                <motion.div
                   key={s.name}
-                  className="group relative flex items-center gap-1.5 rounded-xl border border-border bg-card/30 px-3 py-1.5 text-xs transition-all hover:bg-card hover:border-primary/30"
+                  whileHover={{ y: -3 }}
+                  className="group rounded-3xl border border-border/70 bg-card/90 p-4 transition-shadow"
                 >
-                  <span className="font-medium text-foreground">{s.name}</span>
-                  <Badge 
-                    variant="outline" 
-                    className={`
-                      text-[9px] px-1.5 py-0 border-none rounded-md font-semibold font-sans uppercase tracking-wider
-                      ${s.proficiency === "Advanced" ? "bg-primary/25 text-primary-foreground font-bold" : ""}
-                      ${s.proficiency === "Fluent" ? "bg-accent/25 text-foreground font-bold" : ""}
-                      ${s.proficiency === "Intermediate" ? "bg-secondary/25 text-foreground font-semibold" : ""}
-                      ${s.proficiency === "Familiar" ? "bg-muted text-muted-foreground" : ""}
-                      ${s.proficiency === "Learning" ? "bg-success/20 text-success font-semibold animate-pulse" : ""}
-                    `}
-                  >
-                    {s.proficiency}
-                  </Badge>
-                </div>
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">{s.name}</p>
+                      <p className="mt-1 text-xs uppercase tracking-[0.28em] text-muted-foreground/70">{s.proficiency}</p>
+                    </div>
+                    <span className="h-3.5 w-3.5 rounded-full bg-gradient-to-br from-accent to-secondary shadow-[0_0_0_6px_rgba(249,115,22,0.1)]" />
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-muted-foreground/80">
+                    <span className="rounded-full border border-border/70 bg-background/80 px-3 py-1">Premium</span>
+                    <span className="rounded-full border border-border/70 bg-background/80 px-3 py-1">Refined</span>
+                  </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
@@ -575,25 +614,9 @@ function Experience() {
   );
 }
 
-interface LocalProject {
-  title: string;
-  subtitle: string;
-  desc: string;
-  status: "Completed" | "In Progress";
-  stack: string[];
-  features: string[];
-  problemStatement: string;
-  architecture: string;
-  challenges: string;
-  learnings: string;
-  github: string;
-  demo: string | null;
-}
-
 function Projects() {
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<string>("All");
-  const [selectedProject, setSelectedProject] = useState<LocalProject | null>(null);
 
   const tags = useMemo(() => {
     const set = new Set<string>();
@@ -601,7 +624,7 @@ function Projects() {
     return ["All", ...Array.from(set).slice(0, 8)];
   }, []);
 
-  const filtered = (portfolio.projects as LocalProject[]).filter((p) => {
+  const filtered = portfolio.projects.filter((p) => {
     const matchQ = (p.title + p.desc).toLowerCase().includes(query.toLowerCase());
     const matchT = filter === "All" || p.stack.includes(filter);
     return matchQ && matchT;
@@ -609,14 +632,14 @@ function Projects() {
 
   return (
     <Section id="projects" eyebrow="Selected work" title="Projects">
-      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="relative w-full sm:max-w-xs">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             placeholder="Search projects..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="pl-9 bg-card/40"
+            className="pl-9 bg-background/70 text-foreground placeholder:text-muted-foreground"
           />
         </div>
         <div className="flex flex-wrap gap-2">
@@ -624,10 +647,10 @@ function Projects() {
             <button
               key={t}
               onClick={() => setFilter(t)}
-              className={`rounded-full border px-3 py-1 text-xs transition-colors ${
+              className={`rounded-full border px-4 py-2 text-xs uppercase tracking-[0.25em] transition-colors ${
                 filter === t
-                  ? "border-primary/50 bg-gradient-to-r from-primary/20 to-secondary/20 text-foreground"
-                  : "border-border text-muted-foreground hover:text-foreground"
+                  ? "border-accent bg-accent/10 text-accent"
+                  : "border-border text-muted-foreground hover:border-accent/50 hover:text-accent"
               }`}
             >
               {t}
@@ -636,7 +659,7 @@ function Projects() {
         </div>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-8 lg:grid-cols-2">
         <AnimatePresence mode="popLayout">
           {filtered.map((p, i) => (
             <motion.article
@@ -645,123 +668,62 @@ function Projects() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4, delay: (i % 6) * 0.05 }}
+              transition={{ duration: 0.5, delay: (i % 6) * 0.05 }}
               whileHover={{ y: -6 }}
-              className="group relative overflow-hidden rounded-2xl border border-border/80 bg-card hover:border-primary/30 transition-all duration-300"
+              className="group overflow-hidden rounded-[2rem] border border-border/70 bg-background/70 shadow-[0_35px_90px_-45px_rgba(0,0,0,0.55)] transition-transform duration-300 hover:-translate-y-1"
             >
-              <div className="relative m-px rounded-[calc(1rem-1px)] bg-card p-5 flex flex-col justify-between h-full min-h-[380px]">
-                <div>
-                  <div className="flex justify-between items-center mb-3">
-                    <span 
-                      className={`text-[9px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full border
-                        ${p.status === "Completed" ? "bg-success/10 border-success/30 text-success" : "bg-amber-500/10 border-amber-500/30 text-amber-500 animate-pulse"}
-                      `}
-                    >
+              <div className="relative overflow-hidden bg-slate-950">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(249,115,22,0.24),transparent_25%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.14),transparent_30%)]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                <div className="relative p-6 sm:p-8">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className={`rounded-full px-3 py-1.5 text-[10px] uppercase tracking-[0.3em] ${p.status === "Completed" ? "bg-success/10 text-success" : "bg-amber-500/10 text-amber-500"}`}>
                       {p.status}
                     </span>
-                    <span className="text-[10px] text-muted-foreground/60 uppercase tracking-widest font-semibold">{p.subtitle}</span>
+                    <span className="rounded-3xl border border-white/10 bg-black/30 px-3 py-1.5 text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
+                      {p.subtitle}
+                    </span>
                   </div>
-
-                  {/* macOS Browser Mockup */}
-                  <div className="mb-4 overflow-hidden rounded-xl border border-border bg-slate-950 aspect-[16/9] relative group-hover:border-primary/20 transition-all flex flex-col justify-between shadow-inner">
-                    <div className="bg-slate-900 px-3 py-2 flex items-center gap-1.5 border-b border-border/30 shrink-0">
-                      <span className="h-2 w-2 rounded-full bg-red-500/70" />
-                      <span className="h-2 w-2 rounded-full bg-amber-500/70" />
-                      <span className="h-2 w-2 rounded-full bg-green-500/70" />
-                      <div className="h-3.5 flex-1 mx-3 rounded-md bg-slate-950/60 border border-border/20 flex items-center justify-center text-[7px] text-muted-foreground truncate px-2 font-mono">
-                        {p.title.toLowerCase().replace(/\s+/g, "-")}.kraj.dev
-                      </div>
-                    </div>
-                    
-                    <div className="p-3.5 flex-1 flex flex-col justify-between text-muted-foreground relative select-none overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent opacity-40 pointer-events-none" />
-
-                      {p.title === "Portfolio Website" && (
-                        <div className="h-full flex flex-col justify-center items-center text-center relative z-10">
-                          <div className="h-5 w-5 rounded bg-gradient-to-br from-primary to-secondary text-[8px] font-bold text-white flex items-center justify-center mb-1">KR</div>
-                          <span className="font-display font-bold text-[10px] text-foreground">K Raj Portfolio</span>
-                          <span className="text-[7px] text-accent mt-0.5">Java Developer · 2026 Grad</span>
-                          <div className="mt-2.5 flex gap-1 items-center">
-                            <div className="h-2 w-8 rounded-full bg-primary/20 border border-primary/30 text-[5px] text-center flex items-center justify-center font-bold">About</div>
-                            <div className="h-2 w-8 rounded-full bg-secondary/20 border border-secondary/30 text-[5px] text-center flex items-center justify-center font-bold">Projects</div>
-                          </div>
-                        </div>
-                      )}
-
-                      {p.title === "Campus Placement Portal" && (
-                        <div className="h-full flex flex-col justify-between relative z-10 text-[9px]">
-                          <div className="flex justify-between items-center pb-1.5 border-b border-border/30">
-                            <span className="font-bold text-[8px] tracking-wide text-foreground">PLACEMENT HUB</span>
-                            <div className="h-2.5 w-8 rounded bg-primary/20 border border-primary/30" />
-                          </div>
-                          <div className="grid grid-cols-3 gap-1 mt-1.5">
-                            <div className="glass rounded p-1 text-[6px] text-center">
-                              <span className="block font-bold text-foreground">12</span> Active Jobs
-                            </div>
-                            <div className="glass rounded p-1 text-[6px] text-center">
-                              <span className="block font-bold text-foreground">85%</span> Placed
-                            </div>
-                            <div className="glass rounded p-1 text-[6px] text-center">
-                              <span className="block font-bold text-foreground">14</span> Recruiters
-                            </div>
-                          </div>
-                          <div className="h-1.5 w-full rounded bg-muted/20 mt-2" />
-                        </div>
-                      )}
-
-                      {p.title === "Employee Management System" && (
-                        <div className="h-full flex flex-col justify-between relative z-10 text-[9px]">
-                          <div className="flex justify-between items-center pb-1 border-b border-border/30">
-                            <span className="font-bold text-[8px] text-foreground">DIRECTORY</span>
-                            <span className="text-[6px] text-success font-bold bg-success/15 px-1.5 rounded-full">Secure CRUD</span>
-                          </div>
-                          <div className="space-y-1 mt-1.5">
-                            <div className="flex justify-between items-center px-1.5 py-0.5 rounded bg-slate-900/60 border border-border/20">
-                              <div className="flex items-center gap-1.5">
-                                <div className="h-1.5 w-1.5 rounded-full bg-primary" />
-                                <span className="text-[6px] font-medium text-foreground">Raj K.</span>
-                              </div>
-                              <span className="text-[5px] text-muted-foreground">Software Eng</span>
-                            </div>
-                            <div className="flex justify-between items-center px-1.5 py-0.5 rounded bg-slate-900/60 border border-border/20">
-                              <div className="flex items-center gap-1.5">
-                                <div className="h-1.5 w-1.5 rounded-full bg-secondary" />
-                                <span className="text-[6px] font-medium text-foreground">Rahul S.</span>
-                              </div>
-                              <span className="text-[5px] text-muted-foreground">QA Analyst</span>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
+                  <div className="mt-20 max-w-xl">
+                    <h3 className="text-3xl font-semibold tracking-[-0.04em] text-foreground">{p.title}</h3>
+                    <p className="mt-4 text-sm leading-relaxed text-white/80">{p.desc}</p>
                   </div>
+                </div>
+              </div>
 
-                  <h3 className="font-display text-base font-semibold text-foreground group-hover:text-primary transition-colors">{p.title}</h3>
-                  <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed line-clamp-2">{p.desc}</p>
-                  
-                  <div className="mt-4 flex flex-wrap gap-1">
-                    {p.stack.slice(0, 4).map((s) => (
-                      <Badge key={s} variant="outline" className="border-primary/20 bg-primary/5 text-[9px] py-0.5">{s}</Badge>
-                    ))}
-                    {p.stack.length > 4 && (
-                      <Badge variant="outline" className="border-border bg-card/60 text-[9px] py-0.5">+{p.stack.length - 4} more</Badge>
-                    )}
+              <div className="space-y-5 p-6 sm:p-8">
+                <div className="flex flex-wrap gap-2">
+                  {p.stack.slice(0, 4).map((s) => (
+                    <span key={s} className="rounded-full border border-border/60 bg-card/80 px-3 py-1 text-[11px] text-muted-foreground">
+                      {s}
+                    </span>
+                  ))}
+                  {p.stack.length > 4 && (
+                    <span className="rounded-full border border-border/60 bg-card/80 px-3 py-1 text-[11px] text-muted-foreground">
+                      +{p.stack.length - 4} more
+                    </span>
+                  )}
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-[1.5rem] border border-border/60 bg-card/90 p-4">
+                    <p className="text-[11px] uppercase tracking-[0.28em] text-muted-foreground/80">Role</p>
+                    <p className="mt-2 text-sm font-semibold text-foreground">{p.role}</p>
+                  </div>
+                  <div className="rounded-[1.5rem] border border-border/60 bg-card/90 p-4">
+                    <p className="text-[11px] uppercase tracking-[0.28em] text-muted-foreground/80">Duration</p>
+                    <p className="mt-2 text-sm font-semibold text-foreground">{p.duration}</p>
                   </div>
                 </div>
 
-                <div className="mt-6 flex gap-2">
-                  <Button 
-                    onClick={() => setSelectedProject(p)} 
-                    size="sm" 
-                    variant="outline" 
-                    className="flex-1 text-xs border-border bg-card/30 hover:border-primary/40 hover:bg-card/50 transition-colors"
-                  >
-                    Read More
+                <div className="flex flex-wrap gap-3">
+                  <Button asChild size="sm" className="rounded-full bg-accent px-5 py-3 text-xs font-semibold text-black shadow-[0_18px_35px_-20px_rgba(249,115,22,0.7)] hover:opacity-95">
+                    <Link to={`/projects/${p.slug}`}>Read Case Study</Link>
                   </Button>
                   {p.github && (
-                    <Button asChild size="sm" variant="ghost" className="px-3 hover:text-foreground">
-                      <a href={p.github} target="_blank" rel="noreferrer" aria-label="View Source Code">
-                        <Github className="h-4 w-4" />
+                    <Button asChild size="sm" variant="outline" className="rounded-full border border-border bg-background/80 px-5 py-3 text-xs text-foreground hover:border-accent/50 hover:text-accent">
+                      <a href={p.github} target="_blank" rel="noreferrer">
+                        <Github className="mr-2 h-4 w-4" /> Code
                       </a>
                     </Button>
                   )}
@@ -772,131 +734,19 @@ function Projects() {
           {query === "" && (filter === "All" || filter === "Java") && (
             <motion.article
               layout
-              className="group relative overflow-hidden rounded-2xl border border-dashed border-muted-foreground/35 bg-transparent p-6 flex flex-col justify-center items-center text-center min-h-[380px]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex min-h-[380px] flex-col items-center justify-center gap-4 rounded-[2rem] border border-dashed border-muted-foreground/35 bg-background/70 p-8 text-center"
             >
-              <FolderGit2 className="h-8 w-8 text-muted-foreground/60 mb-2.5" />
-              <h3 className="font-display text-sm font-semibold text-muted-foreground">More Projects Coming Soon</h3>
-              <p className="mt-1 text-xs text-muted-foreground/70 max-w-[200px]">
-                Stay tuned as I continue expanding my full-stack and machine learning portfolio.
+              <FolderGit2 className="h-10 w-10 text-muted-foreground/70" />
+              <h3 className="text-lg font-semibold text-foreground">More Projects Coming Soon</h3>
+              <p className="max-w-xs text-sm text-muted-foreground/80">
+                Elegant concept work and new full-stack builds are on the horizon.
               </p>
             </motion.article>
           )}
         </AnimatePresence>
       </div>
-
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/85 backdrop-blur-md overflow-y-auto"
-          >
-            <div className="absolute inset-0 cursor-default" onClick={() => setSelectedProject(null)} />
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: 12 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: 12 }}
-              transition={{ type: "spring", duration: 0.5 }}
-              className="glass relative w-full max-w-2xl rounded-3xl p-6 md:p-8 overflow-hidden max-h-[85vh] overflow-y-auto shadow-2xl border-t border-t-primary/30"
-            >
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute right-5 top-5 grid h-9 w-9 place-items-center rounded-full border border-border bg-card/40 hover:bg-card hover:text-foreground text-muted-foreground transition-colors z-20"
-              >
-                <X className="h-4 w-4" />
-              </button>
-
-              <div className="mb-6 relative z-10">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className={`text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full border
-                    ${selectedProject.status === "Completed" ? "bg-success/15 border-success/30 text-success" : "bg-amber-500/15 border-amber-500/30 text-amber-500 animate-pulse"}
-                  `}>
-                    {selectedProject.status}
-                  </span>
-                  <span className="text-[10px] text-muted-foreground/80 font-medium uppercase tracking-wider">{selectedProject.subtitle}</span>
-                </div>
-                <h3 className="font-display text-2xl font-bold text-foreground pr-8">{selectedProject.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{selectedProject.desc}</p>
-              </div>
-
-              <div className="space-y-6 text-sm leading-relaxed border-t border-border/40 pt-6 text-muted-foreground/90 relative z-10">
-                <div>
-                  <h4 className="text-xs uppercase font-bold text-foreground tracking-wider mb-1.5 flex items-center gap-1.5">
-                    <Sparkles className="h-3.5 w-3.5 text-accent" /> Problem Statement
-                  </h4>
-                  <p className="text-xs sm:text-sm">{selectedProject.problemStatement}</p>
-                </div>
-
-                <div>
-                  <h4 className="text-xs uppercase font-bold text-foreground tracking-wider mb-1.5 flex items-center gap-1.5">
-                    <Briefcase className="h-3.5 w-3.5 text-accent" /> Architecture & Workflow
-                  </h4>
-                  <p className="text-xs sm:text-sm">{selectedProject.architecture}</p>
-                </div>
-
-                <div>
-                  <h4 className="text-xs uppercase font-bold text-foreground tracking-wider mb-2 flex items-center gap-1.5">
-                    <Code2 className="h-3.5 w-3.5 text-accent" /> Key Features
-                  </h4>
-                  <ul className="list-disc list-inside space-y-1.5 text-xs">
-                    {selectedProject.features.map((feat) => (
-                      <li key={feat} className="text-[11px] sm:text-xs">{feat}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="text-xs uppercase font-bold text-foreground tracking-wider mb-2 flex items-center gap-1.5">
-                    <FolderGit2 className="h-3.5 w-3.5 text-accent" /> Technology Stack
-                  </h4>
-                  <div className="flex flex-wrap gap-1.5">
-                    {selectedProject.stack.map((s) => (
-                      <Badge key={s} variant="outline" className="border-primary/30 bg-primary/10 text-foreground font-medium text-[10px]">
-                        {s}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="text-xs uppercase font-bold text-foreground tracking-wider mb-1.5 flex items-center gap-1.5">
-                    <Trophy className="h-3.5 w-3.5 text-accent" /> Challenges Faced
-                  </h4>
-                  <p className="text-xs sm:text-sm">{selectedProject.challenges}</p>
-                </div>
-
-                <div>
-                  <h4 className="text-xs uppercase font-bold text-foreground tracking-wider mb-1.5 flex items-center gap-1.5">
-                    <GraduationCap className="h-3.5 w-3.5 text-accent" /> Key Learnings
-                  </h4>
-                  <p className="text-xs sm:text-sm">{selectedProject.learnings}</p>
-                </div>
-              </div>
-
-              <div className="mt-8 pt-5 border-t border-border/40 flex flex-wrap gap-3 relative z-10">
-                <Button asChild className="flex-1 bg-gradient-to-r from-primary to-secondary text-primary-foreground shadow-[var(--shadow-elegant)] hover:opacity-95">
-                  <a href={selectedProject.github} target="_blank" rel="noreferrer">
-                    <Github className="mr-2 h-4 w-4" /> Source Code
-                  </a>
-                </Button>
-                {selectedProject.demo ? (
-                  <Button asChild variant="outline" className="flex-1 border-border bg-card/40">
-                    <a href={selectedProject.demo} target="_blank" rel="noreferrer">
-                      <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
-                    </a>
-                  </Button>
-                ) : (
-                  <Button variant="outline" className="flex-1 opacity-50 cursor-not-allowed border-border bg-card/10 text-muted-foreground/60" disabled>
-                    <ExternalLink className="mr-2 h-4 w-4" /> Live Demo Unavailable
-                  </Button>
-                )}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </Section>
   );
 }
