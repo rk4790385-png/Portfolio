@@ -22,6 +22,7 @@ import {
   Building2,
   Search,
   Menu,
+  X,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import profileImg from "@/assets/profile.jpg";
@@ -31,8 +32,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
+import { Navigation } from "./Navigation";
 
-const NAV = [
+// Footer nav items - all sections for reference
+const ALL_NAV_ITEMS = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
@@ -57,10 +60,14 @@ function useActiveSection() {
       },
       { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
     );
-    NAV.forEach((n) => {
-      const el = document.getElementById(n.id);
+    
+    // Track only main navigation sections
+    const mainSections = ["home", "about", "projects", "skills", "experience", "contact"];
+    mainSections.forEach((id) => {
+      const el = document.getElementById(id);
       if (el) obs.observe(el);
     });
+    
     return () => obs.disconnect();
   }, []);
   return active;
@@ -102,83 +109,8 @@ function Section({
   );
 }
 
-function Nav() {
-  const active = useActiveSection();
-  const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-xl transition-all duration-300 ${
-        scrolled ? "py-3 shadow-xl shadow-black/10" : "py-4"
-      }`}
-    >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <a href="#home" className="flex items-center gap-3 font-display text-sm uppercase tracking-[0.24em] text-foreground/90">
-          <span className="grid h-10 w-10 place-items-center rounded-2xl bg-foreground text-black font-bold">KR</span>
-          <span className="hidden sm:inline">K Raj</span>
-        </a>
-        <nav className="hidden lg:flex items-center gap-4 text-sm uppercase tracking-[0.18em] text-muted-foreground/80">
-          {NAV.map((n) => (
-            <a
-              key={n.id}
-              href={`#${n.id}`}
-              className={`relative transition-colors ${
-                active === n.id
-                  ? "text-foreground after:absolute after:-bottom-3 after:left-1/2 after:h-0.5 after:w-8 after:-translate-x-1/2 after:rounded-full after:bg-accent"
-                  : "hover:text-foreground"
-              }`}
-            >
-              {n.label}
-            </a>
-          ))}
-        </nav>
-        <div className="flex items-center gap-3">
-          <Button asChild size="sm" className="hidden sm:inline-flex rounded-full bg-accent text-black shadow-[0_20px_50px_-30px_rgba(249,115,22,0.65)] hover:opacity-95">
-            <a href="#contact">Contact Me</a>
-          </Button>
-          <button
-            aria-label="Toggle menu"
-            className="grid h-10 w-10 place-items-center rounded-2xl border border-border bg-card/80 lg:hidden"
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
-      </div>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            className="mx-auto mt-2 max-w-6xl px-4 lg:hidden"
-          >
-            <div className="rounded-3xl border border-border/80 bg-card/90 p-4 shadow-2xl">
-              {NAV.map((n) => (
-                <a
-                  key={n.id}
-                  href={`#${n.id}`}
-                  onClick={() => setOpen(false)}
-                  className={`block rounded-2xl px-4 py-3 text-sm transition-colors ${
-                    active === n.id ? "bg-background text-foreground" : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {n.label}
-                </a>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
-  );
+function Nav({ activeSection }: { activeSection: string }) {
+  return <Navigation activeSection={activeSection} />;
 }
 
 function TypingText({ words }: { words: string[] }) {
@@ -1220,7 +1152,7 @@ function Footer() {
         <div>
           <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">Quick links</h4>
           <ul className="grid grid-cols-2 gap-y-1.5 text-sm">
-            {NAV.slice(0, 8).map((n) => (
+            {ALL_NAV_ITEMS.slice(0, 8).map((n) => (
               <li key={n.id}><a href={`#${n.id}`} className="text-muted-foreground hover:text-foreground">{n.label}</a></li>
             ))}
           </ul>
@@ -1309,6 +1241,8 @@ function Loader({ done }: { done: boolean }) {
 
 export default function Portfolio() {
   const [ready, setReady] = useState(false);
+  const activeSection = useActiveSection();
+  
   useEffect(() => {
     const t = setTimeout(() => setReady(true), 700);
     return () => clearTimeout(t);
@@ -1318,7 +1252,7 @@ export default function Portfolio() {
     <div className="min-h-screen font-sans antialiased bg-background text-foreground">
       <Loader done={ready} />
       <ScrollProgress />
-      <Nav />
+      <Nav activeSection={activeSection} />
       <main>
         <Hero />
         <About />
