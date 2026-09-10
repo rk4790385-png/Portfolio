@@ -24,9 +24,9 @@ export interface SkillGroup {
 
 export const portfolio = {
   name: "K Raj",
-  role: "Artificial Intelligence & Data Science Student",
+  role: "Software Development & QA Intern Candidate",
   tagline:
-    "Passionate Artificial Intelligence and Data Science student with a strong foundation in Java, SQL, Spring Boot, and Web Development. I enjoy designing scalable applications, solving real-world problems, and continuously improving my software engineering skills through practical projects and modern technologies. Currently seeking Software Development and QA Internship opportunities.",
+    "Artificial Intelligence and Data Science student focused on Java, backend systems, and practical full-stack development. I design real-world applications with clean architecture, responsive interfaces, and measurable business value while preparing for software development and QA internship opportunities.",
   typing: [
     "Java Developer",
     "Aspiring Software Engineer",
@@ -36,10 +36,10 @@ export const portfolio = {
   ],
   heroBullets: [
     "Java Developer",
-    "AI & DS Student",
+    "Spring Boot",
+    "SQL & MySQL",
+    "Full-Stack Projects",
     "Open to Internships",
-    "2026 Graduate",
-    "Problem Solver",
   ],
   contact: {
     email: "rk4790385@gmail.com",
@@ -54,7 +54,7 @@ export const portfolio = {
   },
   about: {
     summary:
-      "I am an enthusiastic Artificial Intelligence and Data Science student with a deep-seated passion for software engineering. My interest lies in building robust, scalable applications with a focus on Java, backend services, and interactive web development. I believe in learning by doing; therefore, I choose to build real-world applications that solve actual problems rather than focusing purely on academic theory. I approach software engineering with a learning mindset, constantly updating my skills in modern frameworks and principles. My career objective is to secure a software development or QA internship where I can apply my problem-solving capabilities, collaborate with teams, and contribute to high-quality codebases.",
+      "I am a focused Artificial Intelligence and Data Science student with a strong interest in software engineering, backend development, and practical product building. I enjoy creating robust applications that solve real-world problems, combining Java, Spring Boot, SQL, and modern web technologies to design systems that are functional, maintainable, and user-friendly. My goal is to contribute to a software development or QA team where I can apply structured problem solving, learn from industry practice, and build meaningful products with measurable impact.",
     highlights: [
       "Proficient in Java programming and object-oriented design principles",
       "Building robust, structured backends using Spring Boot and REST APIs",
@@ -200,8 +200,8 @@ export const portfolio = {
         "Publish a polished theme toggle with saved preferences.",
         "Expand the experience with live analytics and recruiter-focused metrics.",
       ],
-      github: "https://github.com/rk4790385-png",
-      demo: "https://github.com/rk4790385-png",
+      github: "https://github.com/rk4790385-png/portfolio-website",
+      demo: "https://github.com/rk4790385-png/portfolio-website",
     },
     {
       slug: "campus-placement-portal",
@@ -230,8 +230,8 @@ export const portfolio = {
         "Add role-based access controls and interview notification automations.",
         "Introduce advanced candidate analytics with trend reports.",
       ],
-      github: "https://github.com/rk4790385-png",
-      demo: null,
+      github: "https://github.com/rk4790385-png/campus-placement-portal",
+      demo: "https://campus-placement-portal-coral.vercel.app/",
     },
     {
       slug: "employee-management-system",
@@ -260,12 +260,12 @@ export const portfolio = {
         "Add employee self-service profile updates and approval workflows.",
         "Implement paginated search and dynamic reporting panels.",
       ],
-      github: "https://github.com/rk4790385-png",
-      demo: null,
+      github: "https://github.com/rk4790385-png/employee-management-system",
+      demo: "https://employee-management-system-mocha-six.vercel.app/",
     },
     {
       slug: "hospital-management-system",
-      title: "Hospital Management System",
+      title: "Health-care Management System",
       subtitle: "Healthcare Administration Platform",
       desc: "An enterprise-grade hospital management system built to coordinate patient care, staff scheduling, and clinical documentation.",
       status: "Completed",
@@ -290,8 +290,8 @@ export const portfolio = {
         "Integrate notifications for patient reminders and doctor schedule updates.",
         "Add analytics dashboards for occupancy, revenue, and patient throughput.",
       ],
-      github: "https://github.com/rk4790385-png",
-      demo: null,
+      github: "https://github.com/rk4790385-png/hospital-management-system",
+      demo: "https://health-care-management-system-ten.vercel.app/",
     },
   ] as Project[],
   certifications: [] as { title: string; issuer: string; date: string; tech: string; link?: string }[],
@@ -317,13 +317,13 @@ export const portfolio = {
       name: "LeetCode",
       handle: "@rk4790385-png",
       stat: "DSA & Problem Solving challenge profile",
-      url: "#",
+      url: "https://leetcode.com/",
     },
     {
       name: "HackerRank",
       handle: "@rk4790385-png",
-      stat: "SQL & Java gold badge profile",
-      url: "#",
+      stat: "SQL & Java practice profile",
+      url: "https://www.hackerrank.com/",
     },
   ],
   stats: [

@@ -76,12 +76,12 @@ export function Navigation({ activeSection }: NavigationProps) {
             {/* Logo */}
             <a
               href="#home"
-              className="flex items-center gap-2 flex-shrink-0 hover:opacity-80 transition-opacity"
+              className="flex items-center gap-3 flex-shrink-0 hover:opacity-80 transition-opacity"
             >
-              <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">
+              <div className="grid h-10 w-10 place-items-center rounded-xl border border-accent/40 bg-accent/10 font-display text-sm font-extrabold text-accent shadow-[0_0_25px_rgba(255,184,107,0.15)]">
                 K
               </div>
-              <span className="text-white font-semibold text-base tracking-tight">
+              <span className="font-display text-base font-bold tracking-[0.18em] text-foreground">
                 K RAJ
               </span>
             </a>
@@ -94,11 +94,11 @@ export function Navigation({ activeSection }: NavigationProps) {
                   <a
                     key={item.id}
                     href={`#${item.id}`}
-                    className="relative text-white text-sm font-medium transition-all duration-300 group"
+                    className="relative text-sm font-medium text-muted-foreground transition-all duration-300 group"
                   >
                     <span
                       className={`transition-colors duration-300 ${
-                        isActive ? "text-orange-500" : "group-hover:text-orange-500"
+                        isActive ? "text-accent" : "group-hover:text-accent"
                       }`}
                     >
                       {item.label}
@@ -106,7 +106,7 @@ export function Navigation({ activeSection }: NavigationProps) {
                     {/* Animated underline */}
                     <motion.span
                       layoutId="navbar-underline"
-                      className="absolute -bottom-1 left-0 h-0.5 w-full bg-gradient-to-r from-orange-500 to-orange-400 rounded-full"
+                      className="absolute -bottom-1 left-0 h-0.5 w-full rounded-full bg-gradient-to-r from-accent to-secondary"
                       initial={false}
                       animate={{
                         opacity: isActive ? 1 : 0,
@@ -130,7 +130,7 @@ export function Navigation({ activeSection }: NavigationProps) {
                 href="#resume"
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 0 }}
-                className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/50 active:scale-95"
+                className="flex items-center gap-2 rounded-xl border border-accent/40 bg-accent px-5 py-2.5 text-sm font-bold text-primary-foreground transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 active:scale-95"
               >
                 <Download className="h-4 w-4" />
                 <span>Resume</span>

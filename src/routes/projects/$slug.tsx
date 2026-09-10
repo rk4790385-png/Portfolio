@@ -67,6 +67,8 @@ function ProjectDetailPage() {
     return <ProjectNotFound />;
   }
 
+  const demoUrl = project.demo ?? project.github;
+
   const tabs = [
     "Overview",
     "Problem",
@@ -167,27 +169,16 @@ function ProjectDetailPage() {
                         <Github className="mr-2 h-4 w-4" /> Source
                       </a>
                     </Button>
-                    {project.demo ? (
-                      <Button
-                        asChild
-                        size="sm"
-                        variant="outline"
-                        className="rounded-full border border-border bg-background/80 px-4 py-2 text-sm text-foreground hover:border-accent/50 hover:text-accent"
-                      >
-                        <a href={project.demo} target="_blank" rel="noreferrer">
-                          <ExternalLink className="mr-2 h-4 w-4" /> Demo
-                        </a>
-                      </Button>
-                    ) : (
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="rounded-full border border-border bg-card/40 px-4 py-2 text-sm text-muted-foreground cursor-not-allowed opacity-60"
-                        disabled
-                      >
+                    <Button
+                      asChild
+                      size="sm"
+                      variant="outline"
+                      className="rounded-full border border-border bg-background/80 px-4 py-2 text-sm text-foreground hover:border-accent/50 hover:text-accent"
+                    >
+                      <a href={demoUrl} target="_blank" rel="noreferrer">
                         <ExternalLink className="mr-2 h-4 w-4" /> Demo
-                      </Button>
-                    )}
+                      </a>
+                    </Button>
                     <Button
                       asChild
                       size="sm"

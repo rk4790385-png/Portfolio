@@ -198,7 +198,7 @@ function Hero() {
         >
           <div className="inline-flex items-center gap-3 rounded-full border border-border/80 bg-background/80 px-4 py-2 text-xs uppercase tracking-[0.28em] text-muted-foreground/80 shadow-[0_15px_60px_-45px_rgba(0,0,0,0.45)]">
             <span className="h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_0_6px_rgba(249,115,22,0.12)]" />
-            Creative Software Engineer
+            Java Developer • Full-Stack Builder
           </div>
 
           <div className="max-w-3xl space-y-6">
@@ -207,7 +207,7 @@ function Hero() {
               {portfolio.name}
             </h1>
             <div className="space-y-4">
-              <p className="text-sm uppercase tracking-[0.28em] text-accent/90">I’m currently</p>
+              <p className="text-sm uppercase tracking-[0.28em] text-accent/90">Professional focus</p>
               <p className="text-2xl font-semibold leading-snug text-foreground sm:text-3xl">
                 <TypingText words={portfolio.typing} />
               </p>
@@ -229,6 +229,12 @@ function Hero() {
               >
                 <span className="block text-xs uppercase tracking-[0.28em] text-muted-foreground/70">{bullet}</span>
               </motion.div>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.28em] text-muted-foreground/70">
+            {['Java', 'Spring Boot', 'SQL', 'React', 'MySQL', 'QA Mindset'].map((tag) => (
+              <span key={tag} className="rounded-full border border-border/70 bg-background/80 px-3 py-1.5">{tag}</span>
             ))}
           </div>
 
@@ -659,6 +665,13 @@ function Projects() {
                       </a>
                     </Button>
                   )}
+                  {p.demo && (
+                    <Button asChild size="sm" variant="secondary" className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-5 py-3 text-xs text-emerald-400 hover:bg-emerald-500/15">
+                      <a href={p.demo} target="_blank" rel="noreferrer">
+                        <ExternalLink className="mr-2 h-4 w-4" /> Open Demo
+                      </a>
+                    </Button>
+                  )}
                 </div>
               </div>
             </motion.article>
@@ -687,16 +700,16 @@ function GitHubSection() {
   const weeks = 24;
   const days = 7;
   const contributions = useMemo(() => {
-    const grid = [];
+    const grid: number[][] = [];
     for (let w = 0; w < weeks; w++) {
-      const week = [];
+      const week: number[] = [];
       for (let d = 0; d < days; d++) {
-        const rand = Math.random();
+        const pattern = (w * 7 + d * 3 + (w % 4) * 2) % 10;
         let level = 0;
-        if (rand > 0.82) level = 4;
-        else if (rand > 0.65) level = 3;
-        else if (rand > 0.45) level = 2;
-        else if (rand > 0.15) level = 1;
+        if (pattern > 7) level = 4;
+        else if (pattern > 5) level = 3;
+        else if (pattern > 3) level = 2;
+        else if (pattern > 1) level = 1;
         week.push(level);
       }
       grid.push(week);
@@ -815,23 +828,10 @@ function GitHubSection() {
           </motion.div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              {
-                name: "Campus-Placement-Portal",
-                desc: "Streamlines college placement workflows with candidate eligibility filtering and job post logs.",
-                lang: "Java",
-                langColor: "bg-primary",
-              },
-              {
-                name: "Employee-Management-System",
-                desc: "Enterprise directory log application featuring secure JDBC transactions and HR profile CRUD boards.",
-                lang: "Java",
-                langColor: "bg-primary",
-              },
-            ].map((repo, idx) => (
+            {portfolio.projects.slice(0, 2).map((project, idx) => (
               <motion.a
-                key={repo.name}
-                href="https://github.com/rk4790385-png"
+                key={project.slug}
+                href={project.demo ?? project.github}
                 target="_blank"
                 rel="noreferrer"
                 initial={{ opacity: 0, y: 15 }}
@@ -842,20 +842,31 @@ function GitHubSection() {
                 className="glass rounded-xl p-4 hover:border-primary/30 transition-all flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center gap-1.5 mb-1.5">
-                    <FolderGit2 className="h-4 w-4 text-accent" />
-                    <span className="font-semibold text-sm truncate text-foreground hover:text-primary transition-colors">{repo.name}</span>
+                  <div className="mb-2 flex items-center justify-between gap-2">
+                    <div className="flex min-w-0 items-center gap-1.5">
+                      <FolderGit2 className="h-4 w-4 text-accent" />
+                      <span className="truncate text-sm font-semibold text-foreground hover:text-primary transition-colors">{project.title}</span>
+                    </div>
+                    <span
+                      className={`rounded-full border px-2 py-0.5 text-[9px] font-medium uppercase tracking-[0.22em] ${
+                        project.demo
+                          ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
+                          : "border-border/70 bg-background/80 text-muted-foreground"
+                      }`}
+                    >
+                      {project.demo ? "Live" : "Repo"}
+                    </span>
                   </div>
-                  <p className="text-xs text-muted-foreground/80 line-clamp-2 leading-relaxed">{repo.desc}</p>
+                  <p className="text-xs text-muted-foreground/80 line-clamp-2 leading-relaxed">{project.desc}</p>
                 </div>
                 <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground">
                   <div className="flex items-center gap-1.5">
-                    <span className={`h-2.5 w-2.5 rounded-full ${repo.langColor}`} />
-                    <span>{repo.lang}</span>
+                    <span className="h-2.5 w-2.5 rounded-full bg-primary" />
+                    <span>{project.stack[0] ?? "Project"}</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <Sparkles className="h-3 w-3 text-amber-500" />
-                    <span>Featured</span>
+                    <span>{project.demo ? "Open Demo" : "Source"}</span>
                   </div>
                 </div>
               </motion.a>
@@ -1056,6 +1067,52 @@ function Resume() {
               </a>
             </Button>
           </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function Opportunity() {
+  return (
+    <Section id="opportunity" eyebrow="Opportunity" title="Ready to contribute from day one">
+      <div className="overflow-hidden rounded-[2rem] border border-border/80 bg-gradient-to-br from-background via-background to-primary/5 p-8 shadow-[0_35px_100px_-50px_rgba(249,115,22,0.45)] sm:p-10">
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+          <div>
+            <p className="text-xs uppercase tracking-[0.32em] text-accent">What I bring</p>
+            <h3 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.03em] text-foreground sm:text-4xl">
+              Strong Java fundamentals, practical project experience, and a learning-first engineering mindset.
+            </h3>
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+              I’m actively looking for software development and QA internship opportunities where I can contribute to real products, collaborate with teams, and keep building strong engineering habits in production-driven environments.
+            </p>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+            {[
+              "Java + Spring Boot",
+              "SQL + database logic",
+              "Frontend problem solving",
+              "QA and delivery mindset",
+            ].map((item) => (
+              <div key={item} className="rounded-2xl border border-border/70 bg-card/80 px-4 py-3 text-sm font-medium text-foreground">
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Button asChild className="bg-gradient-to-r from-primary to-secondary text-primary-foreground shadow-[var(--shadow-elegant)] hover:opacity-95">
+            <a href={`mailto:${portfolio.contact.email}`}>
+              <Mail className="mr-2 h-4 w-4" /> Email me
+            </a>
+          </Button>
+          <Button asChild variant="outline" className="border-border bg-background/80">
+            <a href={portfolio.socials.linkedin} target="_blank" rel="noreferrer">
+              <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
+            </a>
+          </Button>
         </div>
       </div>
     </Section>
@@ -1265,6 +1322,7 @@ export default function Portfolio() {
         <Achievements />
         <CodingProfiles />
         <Resume />
+        <Opportunity />
         <Contact />
       </main>
       <Footer />
