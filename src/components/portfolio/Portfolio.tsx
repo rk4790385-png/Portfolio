@@ -297,119 +297,105 @@ function SocialIcon({ href, label, children }: { href: string; label: string; ch
 
 function About() {
   const journey = [
-    {
-      title: "SSLC",
-      subtitle: "Vidhya Bharathi CBSE School",
-      period: "2019 — 2020",
-      note: "Built the foundation of analytical thinking and problem solving.",
-    },
-    {
-      title: "Pre-University",
-      subtitle: "Justice Shivaraj Patil PU College",
-      period: "2020 — 2022",
-      note: "Focused on mathematics, computer science, and applied logic.",
-    },
-    {
-      title: "Engineering",
-      subtitle: "Government Engineering College, Bidar",
-      period: "2022 — 2026",
-      note: "Studying AI, data science, and building real-world software systems.",
-    },
-    {
-      title: "Projects",
-      subtitle: "Portfolio, Campus Placement Portal, EMS",
-      period: "2024 — Present",
-      note: "Designing premium user experiences and end-to-end applications.",
-    },
-    {
-      title: "Internship Goals",
-      subtitle: "Software Development & QA",
-      period: "2026",
-      note: "Seeking industry mentorship, hands-on backend work, and QA exposure.",
-    },
+    { year: "2019 – 20", label: "Foundation", note: "SSLC · analytical thinking" },
+    { year: "2020 – 22", label: "Computer Science & Maths", note: "Pre-University · applied logic" },
+    { year: "2022 – 26", label: "B.E. AI & Data Science", note: "GEC Bidar · full-stack projects" },
+    { year: "2024 – Now", label: "Full-Stack Projects", note: "Portfolio · EMS · Placement Portal" },
+    { year: "2026", label: "Internship / Career Focus", note: "Software Dev & QA · open to opportunities" },
   ];
 
   return (
     <Section id="about" eyebrow="About me" title="Story & journey">
-      <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr]">
+      <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:items-start">
+        {/* Left — compact info card + timeline */}
         <motion.div
           initial={{ opacity: 0, x: -16 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-card/80 p-6 shadow-[0_40px_90px_-50px_rgba(0,0,0,0.5)]"
+          className="space-y-4"
         >
-          <div className="absolute right-0 top-0 h-24 w-24 rounded-full bg-accent/10 blur-3xl" />
-          <div className="absolute left-5 top-6 h-14 w-14 rounded-full border border-accent/20 bg-accent/5" />
-          <div className="relative space-y-4">
-            <div className="rounded-3xl border border-border/70 bg-background/90 p-4">
-              <p className="text-xs uppercase tracking-[0.32em] text-muted-foreground/80">Current focus</p>
-              <p className="mt-3 text-sm leading-relaxed text-foreground/90">
-                {portfolio.about.summary}
-              </p>
+          <div className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-card/80 p-6 shadow-[0_40px_90px_-50px_rgba(0,0,0,0.5)]">
+            <div className="absolute right-0 top-0 h-24 w-24 rounded-full bg-accent/10 blur-3xl" />
+            <div className="absolute left-5 top-6 h-14 w-14 rounded-full border border-accent/20 bg-accent/5" />
+            <div className="relative space-y-4">
+              {/* Short intro */}
+              <div className="rounded-3xl border border-border/70 bg-background/90 p-4">
+                <p className="text-xs uppercase tracking-[0.32em] text-muted-foreground/80 mb-2">Who I am</p>
+                <p className="text-sm leading-relaxed text-foreground/90">
+                  AI & Data Science engineering student passionate about Java, backend systems, and full-stack development.
+                  I build real-world applications with clean architecture and measurable impact — seeking a Software Dev or QA internship in 2026.
+                </p>
+              </div>
+              {/* 4-item compact grid — no email / phone */}
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { label: "Location", value: "Raichur, Karnataka" },
+                  { label: "Degree", value: "B.E. AI & Data Science" },
+                  { label: "College", value: "GEC Bidar" },
+                  { label: "Current Focus", value: "Java · Full-Stack Dev" },
+                ].map((item) => (
+                  <div key={item.label} className="rounded-2xl border border-border/60 bg-background/80 px-3 py-3">
+                    <div className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground/70">{item.label}</div>
+                    <div className="mt-1 text-sm font-semibold text-foreground">{item.value}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {portfolio.about.quick.map((item) => (
-                <div key={item.label} className="rounded-3xl border border-border/60 bg-background/80 p-4">
-                  <div className="text-xs uppercase tracking-[0.28em] text-muted-foreground/70">{item.label}</div>
-                  <div className="mt-2 text-sm font-semibold text-foreground">{item.value}</div>
+          </div>
+
+          {/* Career timeline — below the Who I am card */}
+          <div className="rounded-[2rem] border border-border/70 bg-card/85 p-5">
+            <div className="mb-4">
+              <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground/70">Career timeline</p>
+              <h4 className="text-xl font-semibold text-foreground">Quick journey</h4>
+            </div>
+            <div className="space-y-2">
+              {journey.map((item) => (
+                <div
+                  key={item.year}
+                  className="group flex items-center gap-3 rounded-2xl border border-border/60 bg-background/70 px-4 py-3 transition hover:border-accent/50"
+                >
+                  <span className="w-20 shrink-0 text-xs font-semibold text-accent/90 tabular-nums">{item.year}</span>
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-foreground truncate">{item.label}</p>
+                    <p className="text-[11px] text-muted-foreground/70 truncate">{item.note}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </motion.div>
 
+        {/* Right — approach + highlights only */}
         <motion.div
           initial={{ opacity: 0, x: 16 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.05 }}
-          className="space-y-8"
+          className="space-y-6"
         >
-          <div className="space-y-4">
+          {/* My approach */}
+          <div className="space-y-3">
             <p className="text-sm uppercase tracking-[0.28em] text-accent/90">My approach</p>
             <h3 className="max-w-2xl text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
               I build thoughtful software with clean structure, clarity, and real-world impact.
             </h3>
-            <div className="space-y-3 text-sm leading-relaxed text-muted-foreground/90">
+            <div className="space-y-2 text-sm leading-relaxed text-muted-foreground/90">
               <p>{portfolio.about.highlights[0]}</p>
               <p>{portfolio.about.highlights[1]}</p>
               <p>{portfolio.about.highlights[2]}</p>
             </div>
           </div>
 
-          <div className="grid gap-4">
+          {/* Highlight pills */}
+          <div className="grid gap-3">
             {portfolio.about.highlights.slice(3).map((highlight) => (
-              <div key={highlight} className="rounded-3xl border border-border/60 bg-background/80 p-5 text-sm text-foreground/90">
-                <div className="mb-2 text-xs uppercase tracking-[0.28em] text-muted-foreground/70">Highlight</div>
+              <div key={highlight} className="rounded-3xl border border-border/60 bg-background/80 p-4 text-sm text-foreground/90">
+                <div className="mb-1 text-xs uppercase tracking-[0.28em] text-muted-foreground/70">Highlight</div>
                 <p>{highlight}</p>
               </div>
             ))}
-          </div>
-
-          <div className="rounded-[2rem] border border-border/70 bg-card/85 p-6">
-            <div className="mb-6 flex items-center justify-between gap-4">
-              <div>
-                <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground/70">Career timeline</p>
-                <h4 className="text-2xl font-semibold text-foreground">From school to projects to future goals</h4>
-              </div>
-            </div>
-            <div className="space-y-4">
-              {journey.map((item) => (
-                <div key={item.title} className="group grid gap-2 rounded-3xl border border-border/60 bg-background/70 p-4 transition hover:border-accent/50">
-                  <div className="flex items-center justify-between gap-3">
-                    <div>
-                      <p className="text-base font-semibold text-foreground">{item.title}</p>
-                      <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground/80">{item.period}</p>
-                    </div>
-                    <div className="rounded-full border border-border bg-card/80 px-3 py-1 text-[10px] uppercase tracking-[0.3em] text-muted-foreground/80">
-                      {item.subtitle}
-                    </div>
-                  </div>
-                  <p className="text-sm leading-relaxed text-muted-foreground/90">{item.note}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </motion.div>
       </div>
@@ -708,6 +694,12 @@ function GitHubSection() {
     return grid;
   }, []);
 
+  const featuredProjects = useMemo(() => {
+    const ems = portfolio.projects.find((p) => p.slug === "employee-management-system");
+    const cpp = portfolio.projects.find((p) => p.slug === "campus-placement-portal");
+    return [ems, cpp].filter(Boolean) as typeof portfolio.projects;
+  }, []);
+
   return (
     <Section id="github" eyebrow="Open Source" title="GitHub Activity">
       <div className="grid gap-6 lg:grid-cols-[1fr_2fr]">
@@ -819,7 +811,7 @@ function GitHubSection() {
           </motion.div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            {portfolio.projects.slice(0, 2).map((project, idx) => (
+            {featuredProjects.map((project, idx) => (
               <motion.a
                 key={project.slug}
                 href={project.demo ?? project.github}
