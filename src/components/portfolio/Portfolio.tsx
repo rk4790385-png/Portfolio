@@ -341,16 +341,7 @@ function About() {
         >
           <div className="absolute right-0 top-0 h-24 w-24 rounded-full bg-accent/10 blur-3xl" />
           <div className="absolute left-5 top-6 h-14 w-14 rounded-full border border-accent/20 bg-accent/5" />
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-border/60 bg-black/20">
-            <img
-              src={profileImg}
-              alt="Portrait of K Raj"
-              width={1024}
-              height={1024}
-              className="aspect-[4/5] w-full object-cover"
-            />
-          </div>
-          <div className="mt-6 space-y-4">
+          <div className="relative space-y-4">
             <div className="rounded-3xl border border-border/70 bg-background/90 p-4">
               <p className="text-xs uppercase tracking-[0.32em] text-muted-foreground/80">Current focus</p>
               <p className="mt-3 text-sm leading-relaxed text-foreground/90">

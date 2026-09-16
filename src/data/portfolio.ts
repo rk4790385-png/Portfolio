@@ -121,24 +121,7 @@ export const portfolio = {
         { name: "Eclipse", proficiency: "Intermediate" },
       ],
     },
-    {
-      group: "Testing",
-      items: [
-        { name: "Manual Testing", proficiency: "Intermediate" },
-        { name: "Selenium", proficiency: "Learning" },
-      ],
-    },
-    {
-      group: "Soft Skills",
-      items: [
-        { name: "Problem Solving", proficiency: "Advanced" },
-        { name: "Communication", proficiency: "Advanced" },
-        { name: "Leadership", proficiency: "Intermediate" },
-        { name: "Teamwork", proficiency: "Advanced" },
-        { name: "Quick Learning", proficiency: "Advanced" },
-        { name: "Time Management", proficiency: "Advanced" },
-      ],
-    },
+
   ] as SkillGroup[],
   education: [
     {
