@@ -23,8 +23,8 @@ export interface SkillGroup {
 }
 
 export const portfolio = {
-  name: "K Raj",
-  role: "Full-Stack Developer",
+  name: "Raj K",
+  role: "Java Full-Stack Developer",
   tagline:
     "Artificial Intelligence and Data Science graduate focused on full-stack web development with React, TypeScript, and Supabase, with a growing foundation in Java backend development through an active Java Full Stack Development training program. I build real, working applications and am looking for software development or QA opportunities to keep growing as an engineer.",
   typing: [
