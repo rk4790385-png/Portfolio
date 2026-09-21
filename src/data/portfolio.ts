@@ -24,22 +24,22 @@ export interface SkillGroup {
 
 export const portfolio = {
   name: "K Raj",
-  role: "Software Development & QA Intern Candidate",
+  role: "Full-Stack Developer & CS Graduate",
   tagline:
-    "Artificial Intelligence and Data Science student focused on Java, backend systems, and practical full-stack development. I design real-world applications with clean architecture, responsive interfaces, and measurable business value while preparing for software development and QA internship opportunities.",
+    "Artificial Intelligence and Data Science graduate focused on full-stack web development with React, TypeScript, and Supabase, with a growing foundation in Java backend development through an active Java Full Stack Development training program. I build real, working applications and am looking for software development or QA opportunities to keep growing as an engineer.",
   typing: [
-    "Java Developer",
-    "Aspiring Software Engineer",
-    "Web Developer",
+    "Full-Stack Developer",
+    "React & TypeScript Developer",
+    "Java Learner",
     "Problem Solver",
     "Software Engineering Enthusiast",
   ],
   heroBullets: [
-    "Java Developer",
-    "Spring Boot",
+    "Full-Stack Developer",
+    "React & TypeScript",
+    "Supabase & PostgreSQL",
     "SQL & MySQL",
-    "Full-Stack Projects",
-    "Open to Internships",
+    "Open to Opportunities",
   ],
   contact: {
     email: "rk4790385@gmail.com",
@@ -49,19 +49,23 @@ export const portfolio = {
   socials: {
     linkedin: "https://www.linkedin.com/in/raj-k-5571372ba",
     github: "https://github.com/rk4790385-png",
+    // TODO: replace with your real LeetCode/HackerRank profile URLs, or remove
+    // these two from codingProfiles below if you don't have active accounts —
+    // a link to the bare homepage instead of your profile reads as fake.
     leetcode: "https://leetcode.com/",
     hackerrank: "https://www.hackerrank.com/",
   },
   about: {
     summary:
-      "I am a focused Artificial Intelligence and Data Science student with a strong interest in software engineering, backend development, and practical product building. I enjoy creating robust applications that solve real-world problems, combining Java, Spring Boot, SQL, and modern web technologies to design systems that are functional, maintainable, and user-friendly. My goal is to contribute to a software development or QA team where I can apply structured problem solving, learn from industry practice, and build meaningful products with measurable impact.",
+      "I am an Artificial Intelligence and Data Science graduate with a strong interest in full-stack software engineering. I've built and deployed four independent projects using React, TypeScript, and Supabase, along with a Python-based machine learning project and a desktop application. I'm currently completing a structured Java Full Stack Development training program to build practical Java and Spring Boot skills, and my goal is to contribute to a software development or QA team where I can keep learning from real engineering practice.",
     highlights: [
-      "Proficient in Java programming and object-oriented design principles",
-      "Building robust, structured backends using Spring Boot and REST APIs",
-      "Designing clean relational schemas and writing optimized SQL with MySQL",
-      "Creating modern, responsive user interfaces using HTML5, CSS3, JavaScript, and React",
-      "Adhering to Git workflows for structured version control and collaboration",
-      "Applying systematic testing methods (Manual testing, Selenium learning) to ensure product quality",
+      "Building full-stack web applications using React, TypeScript, and Supabase (PostgreSQL)",
+      "Proficient in Core Java and object-oriented design principles; currently building practical Spring Boot experience through a structured training program",
+      "Applying data structures and algorithms fundamentals to problem solving",
+      "Designing relational schemas and writing SQL with MySQL and PostgreSQL",
+      "Creating responsive user interfaces using HTML5, CSS3, JavaScript, React, and TanStack Start",
+      "Adhering to Git workflows for structured version control",
+      "Applying manual testing methods to verify application functionality",
     ],
     quick: [
       { label: "Location", value: "Raichur, Karnataka" },
@@ -69,14 +73,13 @@ export const portfolio = {
       { label: "College", value: "Government Engineering College, Bidar" },
       { label: "Email", value: "rk4790385@gmail.com" },
       { label: "Phone", value: "9972618146" },
-      { label: "Expected Graduation", value: "2026" },
+      { label: "Graduated", value: "2026" },
       { label: "Branch", value: "Artificial Intelligence and Data Science" },
     ],
     currentlyLearning: [
       { name: "Spring Boot", desc: "Enterprise backend development" },
       { name: "REST APIs", desc: "Designing scalable API endpoints" },
       { name: "Data Structures & Algorithms", desc: "Optimizing program efficiency" },
-      { name: "React", desc: "Building interactive user interfaces" },
       { name: "Software Testing", desc: "Quality assurance & test automation" },
       { name: "Database Design", desc: "Schema normalization & indexing" },
     ],
@@ -85,18 +88,21 @@ export const portfolio = {
     {
       group: "Programming Languages",
       items: [
-        { name: "Java", proficiency: "Advanced" },
+        { name: "Java", proficiency: "Intermediate" },
         { name: "Python", proficiency: "Intermediate" },
+        { name: "TypeScript", proficiency: "Intermediate" },
         { name: "SQL", proficiency: "Fluent" },
       ],
     },
     {
       group: "Frontend",
       items: [
+        { name: "React", proficiency: "Intermediate" },
         { name: "HTML5", proficiency: "Advanced" },
         { name: "CSS3", proficiency: "Advanced" },
         { name: "JavaScript", proficiency: "Intermediate" },
-        { name: "React", proficiency: "Familiar" },
+        { name: "Vite", proficiency: "Familiar" },
+        { name: "TanStack Start", proficiency: "Familiar" },
       ],
     },
     {
@@ -104,12 +110,14 @@ export const portfolio = {
       items: [
         { name: "Spring Boot", proficiency: "Learning" },
         { name: "REST APIs", proficiency: "Familiar" },
+        { name: "Supabase", proficiency: "Intermediate" },
       ],
     },
     {
       group: "Database",
       items: [
         { name: "MySQL", proficiency: "Fluent" },
+        { name: "PostgreSQL", proficiency: "Intermediate" },
       ],
     },
     {
@@ -118,17 +126,15 @@ export const portfolio = {
         { name: "Git", proficiency: "Intermediate" },
         { name: "GitHub", proficiency: "Fluent" },
         { name: "VS Code", proficiency: "Advanced" },
-        { name: "Eclipse", proficiency: "Intermediate" },
       ],
     },
-
   ] as SkillGroup[],
   education: [
     {
       degree: "Bachelor of Engineering",
       institution: "Government Engineering College, Bidar",
-      detail: "Artificial Intelligence and Data Science · CGPA: 6.97 · Expected Graduation: 2026",
-      period: "2022 — 2026 (Expected)",
+      detail: "Artificial Intelligence and Data Science · CGPA: 6.97",
+      period: "2022 — 2026",
     },
     {
       degree: "Pre-University (PUC)",
@@ -145,13 +151,23 @@ export const portfolio = {
   ],
   experience: [
     {
+      role: "Java Full Stack Development Training",
+      company: "KodNest Technologies",
+      period: "Feb 2026 — Present",
+      bullets: [
+        "Completing a paid, curriculum-based Java Full Stack Development training program covering Core Java, MySQL, frontend technologies, and manual testing, with a certificate on completion.",
+        "Applying concepts from the program directly to independent projects to build practical, verifiable skills.",
+      ],
+      stack: ["Java", "MySQL", "React", "Manual Testing"],
+    },
+    {
       role: "Full-Stack Project Development & Self-Study",
       company: "Independent Learning",
-      period: "Ongoing",
+      period: "2026",
       bullets: [
-        "Currently enhancing my software development skills by building full-stack projects, strengthening Java fundamentals, learning Spring Boot, practicing Data Structures & Algorithms, and exploring modern web development technologies.",
+        "Built and deployed four independent projects using React, TypeScript, Supabase, and Python, while strengthening Java fundamentals and Data Structures & Algorithms.",
       ],
-      stack: ["Java", "Spring Boot", "MySQL", "REST APIs", "React", "Data Structures"],
+      stack: ["React", "TypeScript", "Supabase", "Python", "Data Structures"],
     },
   ],
   projects: [
@@ -159,29 +175,27 @@ export const portfolio = {
       slug: "portfolio-website",
       title: "Portfolio Website",
       subtitle: "Personal Portfolio Showcase",
-      desc: "A responsive, high-performance portfolio website to display professional projects, skills, education, and credentials.",
+      desc: "A responsive personal portfolio website to display projects, skills, education, and credentials.",
       status: "Completed",
-      role: "Lead Frontend Developer",
-      duration: "Jan 2024 — Present",
-      stack: ["React", "Vite", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      role: "Frontend Developer (Solo Project)",
+      duration: "2026",
+      stack: ["React", "Vite", "TypeScript", "Tailwind CSS"],
       features: [
-        "Dynamic typing animation and animated statistics",
-        "Responsive, mobile-first design and dark-theme aesthetics",
+        "Responsive, mobile-first design",
         "Filterable project section with dedicated case study pages",
-        "Interactive GitHub contribution graph and profile dashboard preview",
+        "Contact section with direct email and social links",
       ],
       problemStatement:
-        "Recruiters often sift through dry, text-only resumes, making it difficult for software engineering applicants to stand out, showcase front-end styling abilities, present modular projects interactively, and verify dynamic coding credentials.",
+        "A plain-text resume makes it hard to show frontend styling ability or let a reviewer explore individual projects in depth, so I wanted a single place to present my work interactively.",
       architecture:
-        "Built as a Single Page Application (SPA) using React, Vite, and TypeScript. The layouts are styled with Tailwind CSS, utilizing Framer Motion for state-based animations, and structured with modular UI components to ensure fast performance and no layout shifts.",
+        "Built as a single-page React application using Vite and TypeScript, styled with Tailwind CSS, with each project rendered from a shared data file so new projects can be added without touching layout code.",
       challenges:
-        "Fine-tuning performance scores, eliminating layout shifts from lazy-loaded graphics, and keeping initial transition animations running at a smooth 60fps across mobile and tablet viewports.",
+        "Keeping the layout responsive and readable across mobile and desktop without a design background to draw on.",
       learnings:
-        "Mastered responsive page design, improved content hierarchy, and refined portfolio storytelling for a premium personal brand experience.",
+        "Practical experience with component-based frontend architecture, responsive layout techniques, and structuring a small TypeScript codebase around a single data source.",
       futureImprovements: [
-        "Add accessibility-first keyboard interactions and screen reader support.",
-        "Publish a polished theme toggle with saved preferences.",
-        "Expand the experience with live analytics and recruiter-focused metrics.",
+        "Add accessibility improvements (keyboard navigation, screen reader support).",
+        "Add a light/dark theme toggle.",
       ],
       github: "https://github.com/rk4790385-png/portfolio-website",
       demo: "https://github.com/rk4790385-png/portfolio-website",
@@ -189,29 +203,27 @@ export const portfolio = {
     {
       slug: "campus-placement-portal",
       title: "Campus Placement Portal",
-      subtitle: "Recruitment Workflow System",
-      desc: "A comprehensive web application designed to streamline campus recruitment workflows for students, coordinators, and employers.",
+      subtitle: "Recruitment Workflow Concept",
+      desc: "A frontend concept application exploring how a campus recruitment workflow could work for students and coordinators.",
       status: "In Progress",
-      role: "Full-Stack Developer",
-      duration: "Jul 2024 — Ongoing",
-      stack: ["Java", "Spring Boot", "REST APIs", "MySQL", "React", "Tailwind CSS"],
+      role: "Frontend Developer (Solo Project)",
+      duration: "2026",
+      stack: ["React", "TypeScript", "Vite", "Bun"],
       features: [
-        "Student profile creation, resume uploading, and eligibility calculation",
-        "Recruiter dashboard to filter candidates based on CGPA and Branch",
-        "Automated job board with dynamic post creation and applications pipeline",
-        "Real-time interview scheduling and status tracking for applicants",
+        "Student profile and application UI",
+        "Coordinator-facing views for browsing candidate data",
       ],
       problemStatement:
-        "Campus placement workflows are traditionally fragmented, relying on manual spreadsheet entries, paper-based notifications, and emails to manage student data, verify eligibility metrics, publish job openings, and trace selection results.",
+        "Campus placement workflows are often fragmented across spreadsheets and email; I wanted to explore what a unified interface for this process could look like.",
       architecture:
-        "Follows a decoupled three-tier MVC architecture: a frontend Client built with React and Tailwind CSS, a Spring Boot backend REST API managing candidate filter logic and business services, and a MySQL relational database handling normalized records.",
+        "A React and TypeScript single-page application built with Vite and Bun. This is currently a frontend-only build using local state — it does not yet have a connected backend or database.",
       challenges:
-        "Designing an efficient backend query system to filter student records using multi-attribute criteria (CGPA threshold, active backlogs, branch) while maintaining quick response times and query accuracy.",
+        "Structuring the UI to support multiple user perspectives (student vs. coordinator) cleanly within a frontend-only application.",
       learnings:
-        "Deepened understanding of building secure RESTful APIs, working with Spring Data JPA repositories, utilizing MySQL indexes for performance, and designing responsive grid interfaces for data dashboards.",
+        "Component structuring in React/TypeScript and planning an application's data model before wiring up a real backend.",
       futureImprovements: [
-        "Add role-based access controls and interview notification automations.",
-        "Introduce advanced candidate analytics with trend reports.",
+        "Connect a real backend (e.g. Supabase) for persistent data and authentication.",
+        "Add role-based views backed by real accounts.",
       ],
       github: "https://github.com/rk4790385-png/campus-placement-portal",
       demo: "https://campus-placement-portal-coral.vercel.app/",
@@ -219,29 +231,27 @@ export const portfolio = {
     {
       slug: "employee-management-system",
       title: "Employee Management System",
-      subtitle: "Full-Stack Enterprise Directory",
-      desc: "A scalable full-stack application to organize department details, automate salary listings, and manage employee records.",
+      subtitle: "Full-Stack Employee Directory",
+      desc: "A full-stack application to organize employee and department records.",
       status: "Completed",
-      role: "Backend Developer",
-      duration: "Apr 2024 — Jun 2024",
-      stack: ["Java", "Spring Boot", "JDBC", "MySQL", "HTML5", "CSS3", "JavaScript"],
+      role: "Full-Stack Developer (Solo Project)",
+      duration: "2026",
+      stack: ["React", "TypeScript", "Vite", "Supabase (PostgreSQL)"],
       features: [
-        "Secure dashboard interface with HR/Admin authentication access control",
-        "CRUD operations for employee records, department structures, and job roles",
-        "Automated salary slip logging and attendance log tracking functionality",
-        "Database integration with relational mapping for data consistency",
+        "Employee record storage and retrieval",
+        "Structured department and role data",
       ],
       problemStatement:
-        "Small and medium enterprises struggle to securely manage employee profiles, department transfers, attendance logging, and payroll records without dedicated systems, often resulting in synchronization conflicts and data leaks.",
+        "Small teams often manage employee data in spreadsheets with no structure or access control, so I wanted to build a proper database-backed alternative.",
       architecture:
-        "Structured using a standard Model-View-Controller backend with Spring Boot. Relational database mapping is handled via JDBC/JPA, routing request parameters to services that interact with a MySQL database. Rendered on the frontend using responsive HTML templates.",
+        "A React and TypeScript frontend with Supabase providing the backend: PostgreSQL database, auto-generated APIs, and authentication, removing the need to hand-write a separate backend server.",
       challenges:
-        "Constructing a reliable, transaction-safe service method to process monthly payroll updates and generate pay slips, preventing errors during database connections or network disruptions.",
+        "Designing a PostgreSQL schema in Supabase that cleanly modeled employee and department relationships, and correctly securing data access with Supabase's row-level security.",
       learnings:
-        "Gained hands-on experience in Java database integration (JDBC), managing database transactions, implementing input validation filters, and setting up role-based conditional rendering.",
+        "Practical experience with backend-as-a-service architecture, PostgreSQL schema design, and connecting a React frontend to a managed database and auth provider.",
       futureImprovements: [
-        "Add employee self-service profile updates and approval workflows.",
-        "Implement paginated search and dynamic reporting panels.",
+        "Add employee self-service profile updates.",
+        "Add paginated search and reporting views.",
       ],
       github: "https://github.com/rk4790385-png/employee-management-system",
       demo: "https://employee-management-system-mocha-six.vercel.app/",
@@ -250,28 +260,26 @@ export const portfolio = {
       slug: "hospital-management-system",
       title: "Health-care Management System",
       subtitle: "Healthcare Administration Platform",
-      desc: "An enterprise-grade hospital management system built to coordinate patient care, staff scheduling, and clinical documentation.",
+      desc: "A full-stack application to coordinate patient records and hospital administration workflows.",
       status: "Completed",
-      role: "System Architect",
-      duration: "Feb 2024 — May 2024",
-      stack: ["Java", "Spring Boot", "MySQL", "REST APIs", "HTML5", "CSS3", "JavaScript"],
+      role: "Full-Stack Developer (Solo Project)",
+      duration: "2026",
+      stack: ["TanStack Start", "React", "Supabase (PostgreSQL)"],
       features: [
-        "Patient registration, appointment scheduling, and doctor allocation",
-        "Secure administrative dashboard with bed and staff management",
-        "Automated billing and invoice generation for treatment cycles",
-        "Role-based access controls for doctors, nurses, and administrators",
+        "Patient record storage",
+        "Structured hospital administration data via database migrations",
       ],
       problemStatement:
-        "Hospitals often manage patient details, appointments, and billing through disconnected spreadsheets and manual workflows, causing delays in care coordination, admission tracking, and financial reconciliation.",
+        "Hospitals often coordinate patient and administrative data through disconnected spreadsheets, so I wanted to build a structured, database-backed alternative.",
       architecture:
-        "Designed as a RESTful backend using Spring Boot with MySQL for relational data persistence. The frontend uses responsive HTML and JavaScript templates to deliver a dependable, accessible hospital admin experience.",
+        "Built with TanStack Start and React for routing and UI, with Supabase (PostgreSQL) handling data persistence via versioned database migrations.",
       challenges:
-        "Synchronizing patient, appointment, and billing data while preserving consistency across multiple user roles and workflow states.",
+        "Structuring database migrations in Supabase to model patient and hospital data cleanly as the schema evolved.",
       learnings:
-        "Strengthened service design for multi-role systems, learned to implement secure REST abstractions, and improved data integrity handling for healthcare operations.",
+        "Hands-on experience with TanStack Start's routing model and managing a PostgreSQL schema through migrations rather than manual changes.",
       futureImprovements: [
-        "Integrate notifications for patient reminders and doctor schedule updates.",
-        "Add analytics dashboards for occupancy, revenue, and patient throughput.",
+        "Add authentication and role-based access for staff.",
+        "Add appointment scheduling.",
       ],
       github: "https://github.com/rk4790385-png/hospital-management-system",
       demo: "https://health-care-management-system-ten.vercel.app/",
@@ -279,9 +287,8 @@ export const portfolio = {
   ] as Project[],
   certifications: [] as { title: string; issuer: string; date: string; tech: string; link?: string }[],
   achievements: [
-    { title: "Academic Excellence", desc: "Maintaining a solid CGPA of 6.97 in Artificial Intelligence and Data Science branch." },
-    { title: "Coding Milestones", desc: "Solving multiple coding problems across platform challenges, establishing core logic proficiency." },
-    { title: "Project Milestones", desc: "Built functional desktop applications in Java and full-stack interfaces, translating theoretical knowledge to practice." },
+    { title: "Academic Excellence", desc: "Completed B.E. in Artificial Intelligence and Data Science with a CGPA of 6.97." },
+    { title: "Project Milestones", desc: "Built and deployed four independent projects: three full-stack web apps (React, TypeScript, Supabase) and a Python-based machine learning application." },
   ],
   codingProfiles: [
     {
@@ -296,23 +303,15 @@ export const portfolio = {
       stat: "Professional network & endorsements",
       url: "https://www.linkedin.com/in/raj-k-5571372ba",
     },
-    {
-      name: "LeetCode",
-      handle: "@rk4790385-png",
-      stat: "DSA & Problem Solving challenge profile",
-      url: "https://leetcode.com/",
-    },
-    {
-      name: "HackerRank",
-      handle: "@rk4790385-png",
-      stat: "SQL & Java practice profile",
-      url: "https://www.hackerrank.com/",
-    },
+    // LeetCode/HackerRank entries removed — the URLs on file pointed to the
+    // bare homepage, not a real profile. Add them back with your actual
+    // profile links once you have them; a link that doesn't lead anywhere
+    // specific is worse than no link at all.
   ],
   stats: [
-    { label: "Major Projects", value: "3+" },
+    { label: "Major Projects", value: "4" },
     { label: "Graduate", value: "2026" },
-    { label: "Primary Language", value: "Java" },
+    { label: "Primary Language", value: "TypeScript" },
     { label: "Specialization", value: "AI & DS" },
   ],
 };
