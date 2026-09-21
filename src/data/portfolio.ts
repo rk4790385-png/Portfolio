@@ -24,7 +24,7 @@ export interface SkillGroup {
 
 export const portfolio = {
   name: "K Raj",
-  role: "Full-Stack Developer & CS Graduate",
+  role: "Full-Stack Developer",
   tagline:
     "Artificial Intelligence and Data Science graduate focused on full-stack web development with React, TypeScript, and Supabase, with a growing foundation in Java backend development through an active Java Full Stack Development training program. I build real, working applications and am looking for software development or QA opportunities to keep growing as an engineer.",
   typing: [
@@ -90,7 +90,6 @@ export const portfolio = {
       items: [
         { name: "Java", proficiency: "Intermediate" },
         { name: "Python", proficiency: "Intermediate" },
-        { name: "TypeScript", proficiency: "Intermediate" },
         { name: "SQL", proficiency: "Fluent" },
       ],
     },
@@ -102,7 +101,6 @@ export const portfolio = {
         { name: "CSS3", proficiency: "Advanced" },
         { name: "JavaScript", proficiency: "Intermediate" },
         { name: "Vite", proficiency: "Familiar" },
-        { name: "TanStack Start", proficiency: "Familiar" },
       ],
     },
     {
@@ -110,14 +108,12 @@ export const portfolio = {
       items: [
         { name: "Spring Boot", proficiency: "Learning" },
         { name: "REST APIs", proficiency: "Familiar" },
-        { name: "Supabase", proficiency: "Intermediate" },
       ],
     },
     {
       group: "Database",
       items: [
         { name: "MySQL", proficiency: "Fluent" },
-        { name: "PostgreSQL", proficiency: "Intermediate" },
       ],
     },
     {
