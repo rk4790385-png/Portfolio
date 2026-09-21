@@ -6,7 +6,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Raj K — Artificial Intelligence & Data Science Student & Java Developer" },
-      { name: "description", content: "Portfolio of K Raj — Artificial Intelligence & Data Science student. Strong skills in Java, SQL, Spring Boot, MySQL, and Web Development. Seeking Software Developer and QA Internship opportunities." },
+      { name: "description", content: "Portfolio of Raj K — Artificial Intelligence & Data Science student. Strong skills in Java, SQL, Spring Boot, MySQL, and Web Development. Seeking Software Developer and QA Internship opportunities." },
       { name: "keywords", content: "Raj K, Raj K, Software Developer Portfolio, Java Developer Intern, QA Intern, Spring Boot, SQL, Raichur, Karnataka, Government Engineering College Bidar" },
       { property: "og:title", content: "Raj K — Artificial Intelligence & Data Science Student & Java Developer" },
       { property: "og:description", content: "Java • SQL • Spring Boot • React • Software Testing. Projects, certifications, open source, and contact." },
