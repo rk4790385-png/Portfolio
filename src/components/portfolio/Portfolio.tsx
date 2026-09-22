@@ -515,7 +515,7 @@ function Projects() {
   const allowedProjectSlugs = [
     "employee-management-system",
     "campus-placement-portal",
-    "health-management-system",
+    "hospital-management-system",
   ];
 
   const visibleProjects = portfolio.projects.filter((p) =>
