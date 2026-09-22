@@ -11,7 +11,6 @@ import {
   ArrowUp,
   Briefcase,
   GraduationCap,
-  Award,
   Trophy,
   FolderGit2,
   FileText,
@@ -782,58 +781,6 @@ function GitHubSection() {
   );
 }
 
-function Certifications() {
-  const hasCerts = portfolio.certifications && portfolio.certifications.length > 0;
-  return (
-    <Section id="certifications" eyebrow="Credentials" title="Certifications">
-      {hasCerts ? (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {portfolio.certifications.map((c, i) => (
-            <motion.div
-              key={c.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.04 }}
-              whileHover={{ y: -4 }}
-              className="glass flex flex-col justify-between rounded-2xl p-5 hover:border-primary/30 transition-all"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <Award className="h-6 w-6 text-accent" />
-                  <Badge variant="outline" className="text-[10px] border-primary/20 bg-primary/10">{c.tech}</Badge>
-                </div>
-                <h3 className="font-semibold leading-snug text-foreground">{c.title}</h3>
-                <p className="mt-1 text-xs text-muted-foreground">{c.issuer}</p>
-                <p className="mt-2 text-[10px] text-muted-foreground/60">{c.date}</p>
-              </div>
-              {c.link && (
-                <Button asChild size="sm" variant="ghost" className="mt-4 w-full text-xs hover:bg-card">
-                  <a href={c.link} target="_blank" rel="noreferrer">
-                    <ExternalLink className="mr-1.5 h-3 w-3" /> View Credential
-                  </a>
-                </Button>
-              )}
-            </motion.div>
-          ))}
-        </div>
-      ) : (
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="glass rounded-2xl p-8 text-center max-w-lg mx-auto border border-dashed border-muted-foreground/30"
-        >
-          <Award className="mx-auto h-10 w-10 text-muted-foreground/60 mb-3" />
-          <p className="text-muted-foreground text-sm font-medium">
-            More certifications coming soon as I continue my learning journey.
-          </p>
-        </motion.div>
-      )}
-    </Section>
-  );
-}
-
 function Achievements() {
   return (
     <Section id="achievements" eyebrow="Wins" title="Achievements">
@@ -1236,7 +1183,6 @@ export default function Portfolio() {
         <Experience />
         <Projects />
         <GitHubSection />
-        <Certifications />
         <Achievements />
         <CodingProfiles />
         <Resume />
