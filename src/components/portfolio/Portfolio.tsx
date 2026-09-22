@@ -9,7 +9,6 @@ import {
   Download,
   ExternalLink,
   ArrowUp,
-  Code2,
   Briefcase,
   GraduationCap,
   Award,
@@ -18,8 +17,6 @@ import {
   FileText,
   Send,
   Sparkles,
-  Calendar,
-  Building2,
   Search,
   Menu,
   X,
@@ -296,18 +293,9 @@ function SocialIcon({ href, label, children }: { href: string; label: string; ch
 }
 
 function About() {
-  const journey = [
-    { year: "2019 – 20", label: "Foundation", note: "SSLC · analytical thinking" },
-    { year: "2020 – 22", label: "Computer Science & Maths", note: "Pre-University · applied logic" },
-    { year: "2022 – 26", label: "B.E. AI & Data Science", note: "GEC Bidar · full-stack projects" },
-    { year: "2024 – Now", label: "Full-Stack Projects", note: "Portfolio · EMS · Placement Portal" },
-    { year: "2026", label: "Internship / Career Focus", note: "Software Dev & QA · open to opportunities" },
-  ];
-
   return (
     <Section id="about" eyebrow="About me" title="Story & journey">
       <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:items-start">
-        {/* Left — compact info card + timeline */}
         <motion.div
           initial={{ opacity: 0, x: -16 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -319,15 +307,17 @@ function About() {
             <div className="absolute right-0 top-0 h-24 w-24 rounded-full bg-accent/10 blur-3xl" />
             <div className="absolute left-5 top-6 h-14 w-14 rounded-full border border-accent/20 bg-accent/5" />
             <div className="relative space-y-4">
-              {/* Short intro */}
               <div className="rounded-3xl border border-border/70 bg-background/90 p-4">
-                <p className="text-xs uppercase tracking-[0.32em] text-muted-foreground/80 mb-2">Who I am</p>
+                <p className="mb-2 text-xs uppercase tracking-[0.32em] text-muted-foreground/80">
+                  Who I am
+                </p>
                 <p className="text-sm leading-relaxed text-foreground/90">
-                  AI & Data Science engineering student passionate about Java, backend systems, and full-stack development.
-                  I build real-world applications with clean architecture and measurable impact — seeking a Software Dev or QA internship in 2026.
+                  AI & Data Science engineering student passionate about Java,
+                  backend systems, and full-stack development. I build
+                  real-world applications with clean architecture and
+                  practical problem-solving.
                 </p>
               </div>
-              {/* 4-item compact grid — no email / phone */}
               <div className="grid grid-cols-2 gap-2">
                 {[
                   { label: "Location", value: "Raichur, Karnataka" },
@@ -335,39 +325,23 @@ function About() {
                   { label: "College", value: "GEC Bidar" },
                   { label: "Current Focus", value: "Java · Full-Stack Dev" },
                 ].map((item) => (
-                  <div key={item.label} className="rounded-2xl border border-border/60 bg-background/80 px-3 py-3">
-                    <div className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground/70">{item.label}</div>
-                    <div className="mt-1 text-sm font-semibold text-foreground">{item.value}</div>
+                  <div
+                    key={item.label}
+                    className="rounded-2xl border border-border/60 bg-background/80 px-3 py-3"
+                  >
+                    <div className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground/70">
+                      {item.label}
+                    </div>
+                    <div className="mt-1 text-sm font-semibold text-foreground">
+                      {item.value}
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-
-          {/* Career timeline — below the Who I am card */}
-          <div className="rounded-[2rem] border border-border/70 bg-card/85 p-5">
-            <div className="mb-4">
-              <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground/70">Career timeline</p>
-              <h4 className="text-xl font-semibold text-foreground">Quick journey</h4>
-            </div>
-            <div className="space-y-2">
-              {journey.map((item) => (
-                <div
-                  key={item.year}
-                  className="group flex items-center gap-3 rounded-2xl border border-border/60 bg-background/70 px-4 py-3 transition hover:border-accent/50"
-                >
-                  <span className="w-20 shrink-0 text-xs font-semibold text-accent/90 tabular-nums">{item.year}</span>
-                  <div className="min-w-0">
-                    <p className="text-sm font-semibold text-foreground truncate">{item.label}</p>
-                    <p className="text-[11px] text-muted-foreground/70 truncate">{item.note}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </motion.div>
 
-        {/* Right — approach + highlights only */}
         <motion.div
           initial={{ opacity: 0, x: 16 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -375,11 +349,13 @@ function About() {
           transition={{ duration: 0.7, delay: 0.05 }}
           className="space-y-6"
         >
-          {/* My approach */}
           <div className="space-y-3">
-            <p className="text-sm uppercase tracking-[0.28em] text-accent/90">My approach</p>
+            <p className="text-sm uppercase tracking-[0.28em] text-accent/90">
+              My approach
+            </p>
             <h3 className="max-w-2xl text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
-              I build thoughtful software with clean structure, clarity, and real-world impact.
+              I build thoughtful software with clean structure, clarity, and
+              real-world impact.
             </h3>
             <div className="space-y-2 text-sm leading-relaxed text-muted-foreground/90">
               <p>{portfolio.about.highlights[0]}</p>
@@ -387,12 +363,15 @@ function About() {
               <p>{portfolio.about.highlights[2]}</p>
             </div>
           </div>
-
-          {/* Highlight pills */}
           <div className="grid gap-3">
             {portfolio.about.highlights.slice(3).map((highlight) => (
-              <div key={highlight} className="rounded-3xl border border-border/60 bg-background/80 p-4 text-sm text-foreground/90">
-                <div className="mb-1 text-xs uppercase tracking-[0.28em] text-muted-foreground/70">Highlight</div>
+              <div
+                key={highlight}
+                className="rounded-3xl border border-border/60 bg-background/80 p-4 text-sm text-foreground/90"
+              >
+                <div className="mb-1 text-xs uppercase tracking-[0.28em] text-muted-foreground/70">
+                  Highlight
+                </div>
                 <p>{highlight}</p>
               </div>
             ))}
@@ -533,13 +512,23 @@ function Projects() {
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<string>("All");
 
+  const allowedProjectSlugs = [
+    "employee-management-system",
+    "campus-placement-portal",
+    "health-management-system",
+  ];
+
+  const visibleProjects = portfolio.projects.filter((p) =>
+    allowedProjectSlugs.includes(p.slug),
+  );
+
   const tags = useMemo(() => {
     const set = new Set<string>();
-    portfolio.projects.forEach((p) => p.stack.forEach((s) => set.add(s)));
+    visibleProjects.forEach((p) => p.stack.forEach((s) => set.add(s)));
     return ["All", ...Array.from(set).slice(0, 8)];
-  }, []);
+  }, [visibleProjects]);
 
-  const filtered = portfolio.projects.filter((p) => {
+  const filtered = visibleProjects.filter((p) => {
     const matchQ = (p.title + p.desc).toLowerCase().includes(query.toLowerCase());
     const matchT = filter === "All" || p.stack.includes(filter);
     return matchQ && matchT;
@@ -674,187 +663,137 @@ function Projects() {
 }
 
 function GitHubSection() {
-  const weeks = 24;
-  const days = 7;
-  const contributions = useMemo(() => {
-    const grid: number[][] = [];
-    for (let w = 0; w < weeks; w++) {
-      const week: number[] = [];
-      for (let d = 0; d < days; d++) {
-        const pattern = (w * 7 + d * 3 + (w % 4) * 2) % 10;
-        let level = 0;
-        if (pattern > 7) level = 4;
-        else if (pattern > 5) level = 3;
-        else if (pattern > 3) level = 2;
-        else if (pattern > 1) level = 1;
-        week.push(level);
-      }
-      grid.push(week);
-    }
-    return grid;
-  }, []);
+  const allowedProjectSlugs = [
+    "employee-management-system",
+    "campus-placement-portal",
+    "health-management-system",
+  ];
 
-  const featuredProjects = useMemo(() => {
-    const ems = portfolio.projects.find((p) => p.slug === "employee-management-system");
-    const cpp = portfolio.projects.find((p) => p.slug === "campus-placement-portal");
-    return [ems, cpp].filter(Boolean) as typeof portfolio.projects;
-  }, []);
+  const featuredProjects = allowedProjectSlugs
+    .map((slug) =>
+      portfolio.projects.find((project) => project.slug === slug),
+    )
+    .filter(Boolean)
+    .slice(0, 3);
 
   return (
-    <Section id="github" eyebrow="Open Source" title="GitHub Activity">
-      <div className="grid gap-6 lg:grid-cols-[1fr_2fr]">
+    <Section id="github" eyebrow="Open source" title="GitHub projects">
+      <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -16 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="glass rounded-2xl p-6 flex flex-col justify-between border-t-2 border-t-primary"
+          transition={{ duration: 0.6 }}
+          className="rounded-[2rem] border border-border/70 bg-card/80 p-7 shadow-[0_35px_90px_-55px_rgba(0,0,0,0.5)]"
         >
-          <div>
-            <div className="flex items-center gap-4">
-              <div className="h-16 w-16 overflow-hidden rounded-full border border-primary/30 bg-muted">
-                <img src={profileImg} alt="K Raj GitHub Avatar" className="h-full w-full object-cover" />
-              </div>
-              <div>
-                <h3 className="font-display font-semibold text-base text-foreground">K Raj</h3>
-                <p className="text-xs text-muted-foreground">@rk4790385-png</p>
-                <p className="mt-1 text-[10px] text-accent font-medium uppercase tracking-wider">Java & QA Intern</p>
-              </div>
-            </div>
-
-            <div className="mt-6 grid grid-cols-3 gap-2 text-center text-xs">
-              <div className="glass rounded-xl p-2.5">
-                <span className="block font-bold text-foreground text-sm">12</span>
-                <span className="text-[9px] text-muted-foreground">Repos</span>
-              </div>
-              <div className="glass rounded-xl p-2.5">
-                <span className="block font-bold text-foreground text-sm">180+</span>
-                <span className="text-[9px] text-muted-foreground">Commits</span>
-              </div>
-              <div className="glass rounded-xl p-2.5">
-                <span className="block font-bold text-foreground text-sm">3</span>
-                <span className="text-[9px] text-muted-foreground">Starred</span>
-              </div>
-            </div>
-
-            <div className="mt-6 space-y-2">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Top Languages</h4>
-              <div className="space-y-2">
-                {[
-                  { name: "Java", percent: 65, color: "bg-primary" },
-                  { name: "SQL", percent: 20, color: "bg-accent" },
-                  { name: "HTML/CSS/JS", percent: 15, color: "bg-secondary" },
-                ].map((lang) => (
-                  <div key={lang.name} className="flex items-center justify-between text-xs">
-                    <span className="text-muted-foreground text-[11px]">{lang.name}</span>
-                    <div className="flex items-center gap-2 flex-1 mx-3">
-                      <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
-                        <div className={`h-full ${lang.color}`} style={{ width: `${lang.percent}%` }} />
-                      </div>
-                    </div>
-                    <span className="font-medium text-foreground text-[10px]">{lang.percent}%</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-primary-foreground">
+            <Github className="h-7 w-7" />
           </div>
 
-          <Button asChild size="sm" className="mt-6 bg-gradient-to-r from-primary to-secondary text-primary-foreground">
-            <a href="https://github.com/rk4790385-png" target="_blank" rel="noreferrer">
-              <Github className="mr-2 h-4 w-4" /> View GitHub Profile
+          <p className="mt-6 text-xs uppercase tracking-[0.3em] text-muted-foreground/70">
+            GitHub profile
+          </p>
+
+          <h3 className="mt-2 text-2xl font-semibold text-foreground">
+            Code, projects & experiments
+          </h3>
+
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            Explore my repositories, project source code, and ongoing
+            development work on GitHub.
+          </p>
+
+          <Button
+            asChild
+            className="mt-6 rounded-full bg-gradient-to-r from-primary to-secondary text-primary-foreground"
+          >
+            <a
+              href={portfolio.socials.github}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Github className="mr-2 h-4 w-4" />
+              View GitHub
             </a>
           </Button>
         </motion.div>
 
-        <div className="space-y-6">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="glass rounded-2xl p-6"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Recent Contributions</h4>
-              <span className="text-xs text-muted-foreground">180+ contributions this year</span>
-            </div>
-            <div className="overflow-x-auto">
-              <div className="flex gap-[3px] min-w-[380px] justify-between">
-                {contributions.map((week, wi) => (
-                  <div key={wi} className="flex flex-col gap-[3px]">
-                    {week.map((level, di) => {
-                      const bgClasses = [
-                        "bg-muted/20",
-                        "bg-primary/20",
-                        "bg-primary/45",
-                        "bg-primary/70",
-                        "bg-primary",
-                      ];
-                      return (
-                        <div
-                          key={di}
-                          className={`h-2.5 w-2.5 rounded-sm transition-all hover:scale-125 ${bgClasses[level]}`}
-                        />
-                      );
-                    })}
-                  </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {featuredProjects.map((project, i) => (
+            <motion.article
+              key={project.title}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              className="group rounded-[1.75rem] border border-border/70 bg-background/80 p-5 transition-all hover:-translate-y-1 hover:border-accent/50 hover:shadow-[var(--shadow-glow)]"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20">
+                  <FolderGit2 className="h-5 w-5 text-accent" />
+                </div>
+                <Github className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-foreground" />
+              </div>
+
+              <h3 className="mt-5 text-lg font-semibold text-foreground">
+                {project.title}
+              </h3>
+
+              <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted-foreground">
+                {project.desc}
+              </p>
+
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {project.stack.slice(0, 4).map((tech) => (
+                  <Badge
+                    key={tech}
+                    variant="outline"
+                    className="border-primary/30 bg-primary/10 text-xs text-foreground"
+                  >
+                    {tech}
+                  </Badge>
                 ))}
               </div>
-            </div>
-            <div className="mt-3 flex items-center justify-end gap-1.5 text-[10px] text-muted-foreground">
-              <span>Less</span>
-              <div className="h-2 w-2 rounded-sm bg-muted/20" />
-              <div className="h-2 w-2 rounded-sm bg-primary/20" />
-              <div className="h-2 w-2 rounded-sm bg-primary/45" />
-              <div className="h-2 w-2 rounded-sm bg-primary/70" />
-              <div className="h-2 w-2 rounded-sm bg-primary" />
-              <span>More</span>
-            </div>
-          </motion.div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            {featuredProjects.map((project, idx) => (
-              <motion.a
-                key={project.slug}
-                href={project.demo ?? project.github}
-                target="_blank"
-                rel="noreferrer"
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.05 }}
-                whileHover={{ y: -3 }}
-                className="glass rounded-xl p-4 hover:border-primary/30 transition-all flex flex-col justify-between"
-              >
-                <div>
-                  <div className="mb-2 flex items-center justify-between gap-2">
-                    <div className="flex min-w-0 items-center gap-1.5">
-                      <FolderGit2 className="h-4 w-4 text-accent" />
-                      <span className="truncate text-sm font-semibold text-foreground hover:text-primary transition-colors">{project.title}</span>
-                    </div>
-                    <span
-                      className={`rounded-full border px-2 py-0.5 text-[9px] font-medium uppercase tracking-[0.22em] ${
-                        project.demo
-                          ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
-                          : "border-border/70 bg-background/80 text-muted-foreground"
-                      }`}
+              <div className="mt-5 flex flex-wrap gap-2">
+                {project.github && (
+                  <Button
+                    asChild
+                    size="sm"
+                    variant="outline"
+                    className="rounded-full"
+                  >
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
                     >
-                      {project.demo ? "Live" : "Repo"}
-                    </span>
-                  </div>
-                  <p className="text-xs text-muted-foreground/80 line-clamp-2 leading-relaxed">{project.desc}</p>
-                </div>
-                <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground">
-                  <div className="flex items-center gap-1.5">
-                    <span className="h-2.5 w-2.5 rounded-full bg-primary" />
-                    <span>{project.stack[0] ?? "Project"}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Sparkles className="h-3 w-3 text-amber-500" />
-                    <span>{project.demo ? "Open Demo" : "Source"}</span>
-                  </div>
-                </div>
-              </motion.a>
-            ))}
-          </div>
+                      <Github className="mr-1.5 h-3.5 w-3.5" />
+                      GitHub
+                    </a>
+                  </Button>
+                )}
+
+                {project.demo && (
+                  <Button
+                    asChild
+                    size="sm"
+                    variant="ghost"
+                    className="rounded-full"
+                  >
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <ExternalLink className="mr-1.5 h-3.5 w-3.5" />
+                      Demo
+                    </a>
+                  </Button>
+                )}
+              </div>
+            </motion.article>
+          ))}
         </div>
       </div>
     </Section>
@@ -1192,7 +1131,7 @@ function Footer() {
         <div>
           <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">Quick links</h4>
           <ul className="grid grid-cols-2 gap-y-1.5 text-sm">
-            {ALL_NAV_ITEMS.slice(0, 8).map((n) => (
+            {ALL_NAV_ITEMS.map((n) => (
               <li key={n.id}><a href={`#${n.id}`} className="text-muted-foreground hover:text-foreground">{n.label}</a></li>
             ))}
           </ul>
@@ -1298,18 +1237,3 @@ export default function Portfolio() {
         <About />
         <Skills />
         <Education />
-        <Experience />
-        <Projects />
-        <GitHubSection />
-        <Certifications />
-        <Achievements />
-        <CodingProfiles />
-        <Resume />
-        <Opportunity />
-        <Contact />
-      </main>
-      <Footer />
-      <ScrollTop />
-    </div>
-  );
-}
