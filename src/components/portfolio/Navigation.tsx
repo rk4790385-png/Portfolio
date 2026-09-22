@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Download, Menu, X } from "lucide-react";
-import { Link } from "@tanstack/react-router";
 import { portfolio } from "@/data/portfolio";
 
 interface NavigationProps {
@@ -46,7 +45,6 @@ export function Navigation({ activeSection }: NavigationProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when clicking a nav item
   const handleNavClick = () => {
     setMobileMenuOpen(false);
   };
@@ -90,6 +88,7 @@ export function Navigation({ activeSection }: NavigationProps) {
             <nav className="flex items-center gap-8">
               {MAIN_NAV_ITEMS.map((item) => {
                 const isActive = activeSection === item.id;
+
                 return (
                   <a
                     key={item.id}
@@ -103,6 +102,7 @@ export function Navigation({ activeSection }: NavigationProps) {
                     >
                       {item.label}
                     </span>
+
                     {/* Animated underline */}
                     <motion.span
                       layoutId="navbar-underline"
@@ -127,7 +127,8 @@ export function Navigation({ activeSection }: NavigationProps) {
             <div className="flex items-center gap-4 flex-shrink-0">
               {/* Resume Button */}
               <motion.a
-                href="#resume"
+                href="/resume.pdf"
+                download
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 0 }}
                 className="flex items-center gap-2 rounded-xl border border-accent/40 bg-accent px-5 py-2.5 text-sm font-bold text-primary-foreground transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 active:scale-95"
@@ -140,6 +141,7 @@ export function Navigation({ activeSection }: NavigationProps) {
               <div className="flex items-center gap-3 pl-4 border-l border-white/10">
                 {SOCIAL_LINKS.map((social) => {
                   const Icon = social.icon;
+
                   return (
                     <motion.a
                       key={social.label}
@@ -197,6 +199,7 @@ export function Navigation({ activeSection }: NavigationProps) {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="h-10 w-10 flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors"
               aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? (
                 <X className="h-6 w-6 text-white" />
@@ -234,9 +237,11 @@ export function Navigation({ activeSection }: NavigationProps) {
                 <a href="#home" onClick={handleNavClick}>
                   <span className="text-white font-semibold">K RAJ</span>
                 </a>
+
                 <button
                   onClick={() => setMobileMenuOpen(false)}
                   className="h-10 w-10 flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors"
+                  aria-label="Close menu"
                 >
                   <X className="h-6 w-6 text-white" />
                 </button>
@@ -247,6 +252,7 @@ export function Navigation({ activeSection }: NavigationProps) {
                 <nav className="flex flex-col divide-y divide-white/5 py-4">
                   {MAIN_NAV_ITEMS.map((item) => {
                     const isActive = activeSection === item.id;
+
                     return (
                       <a
                         key={item.id}
@@ -267,7 +273,8 @@ export function Navigation({ activeSection }: NavigationProps) {
                 {/* Resume Button */}
                 <div className="p-6 border-t border-white/5">
                   <a
-                    href="#resume"
+                    href="/resume.pdf"
+                    download
                     onClick={handleNavClick}
                     className="flex items-center justify-center gap-2 w-full px-5 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/50 active:scale-95"
                   >
@@ -280,6 +287,7 @@ export function Navigation({ activeSection }: NavigationProps) {
                 <div className="p-6 border-t border-white/5 flex items-center justify-center gap-4">
                   {SOCIAL_LINKS.map((social) => {
                     const Icon = social.icon;
+
                     return (
                       <a
                         key={social.label}
@@ -288,6 +296,7 @@ export function Navigation({ activeSection }: NavigationProps) {
                         rel="noopener noreferrer"
                         onClick={handleNavClick}
                         className="h-11 w-11 rounded-lg flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 border border-white/10"
+                        aria-label={social.ariaLabel}
                       >
                         <Icon className="h-5 w-5" />
                       </a>
