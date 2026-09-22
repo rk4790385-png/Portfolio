@@ -39,9 +39,8 @@ const ALL_NAV_ITEMS = [
   { id: "education", label: "Education" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
-  { id: "certifications", label: "Certifications" },
   { id: "achievements", label: "Achievements" },
-  { id: "coding", label: "Coding" },
+  { id: "coding", label: "Profiles" },
   { id: "resume", label: "Resume" },
   { id: "contact", label: "Contact" },
 ];
@@ -489,7 +488,7 @@ function Education() {
 
 function Experience() {
   return (
-    <Section id="experience" eyebrow="Experience" title="Where I've worked">
+    <Section id="experience" eyebrow="Experience & training" title="Experience & training">
       <Timeline
         icon={Briefcase}
         items={portfolio.experience.map((e) => ({
@@ -861,7 +860,7 @@ function Achievements() {
 
 function CodingProfiles() {
   return (
-    <Section id="coding" eyebrow="Practice" title="Coding profiles">
+    <Section id="coding" eyebrow="Online presence" title="Profiles & links">
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {portfolio.codingProfiles.map((p, i) => (
           <motion.a
@@ -952,7 +951,7 @@ function Resume() {
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-card/60 px-3 py-1 text-[11px] text-muted-foreground mb-4">
             <span className="h-1.5 w-1.5 rounded-full bg-success animate-pulse" />
-            Last Updated: June 2026
+            Resume
           </div>
           <h3 className="font-display text-2xl font-bold">Review my credentials</h3>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
