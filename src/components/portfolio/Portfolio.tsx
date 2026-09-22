@@ -418,10 +418,6 @@ function Skills() {
                     </div>
                     <span className="h-3.5 w-3.5 rounded-full bg-gradient-to-br from-accent to-secondary shadow-[0_0_0_6px_rgba(249,115,22,0.1)]" />
                   </div>
-                  <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-muted-foreground/80">
-                    <span className="rounded-full border border-border/70 bg-background/80 px-3 py-1">Premium</span>
-                    <span className="rounded-full border border-border/70 bg-background/80 px-3 py-1">Refined</span>
-                  </div>
                 </motion.div>
               ))}
             </div>
@@ -642,20 +638,7 @@ function Projects() {
               </div>
             </motion.article>
           ))}
-          {query === "" && (filter === "All" || filter === "Java") && (
-            <motion.article
-              layout
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex min-h-[380px] flex-col items-center justify-center gap-4 rounded-[2rem] border border-dashed border-muted-foreground/35 bg-background/70 p-8 text-center"
-            >
-              <FolderGit2 className="h-10 w-10 text-muted-foreground/70" />
-              <h3 className="text-lg font-semibold text-foreground">More Projects Coming Soon</h3>
-              <p className="max-w-xs text-sm text-muted-foreground/80">
-                Elegant concept work and new full-stack builds are on the horizon.
-              </p>
-            </motion.article>
-          )}
+
         </AnimatePresence>
       </div>
     </Section>
@@ -666,7 +649,7 @@ function GitHubSection() {
   const allowedProjectSlugs = [
     "employee-management-system",
     "campus-placement-portal",
-    "health-management-system",
+    "hospital-management-system",
   ];
 
   const featuredProjects = allowedProjectSlugs
@@ -1044,8 +1027,22 @@ function Opportunity() {
 function Contact() {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success("Thanks! Your message has been queued. I'll get back to you soon.");
-    (e.target as HTMLFormElement).reset();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const subject = String(data.get("subject") || "Portfolio enquiry");
+    const name = String(data.get("name") || "");
+    const email = String(data.get("email") || "");
+    const phone = String(data.get("phone") || "");
+    const message = String(data.get("message") || "");
+    const body = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      phone ? `Phone: ${phone}` : "",
+      "",
+      message,
+    ].filter(Boolean).join("\n");
+    window.location.href = `mailto:${portfolio.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    form.reset();
   };
   return (
     <Section id="contact" eyebrow="Let's talk" title="Get in touch">
