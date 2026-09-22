@@ -1237,3 +1237,18 @@ export default function Portfolio() {
         <About />
         <Skills />
         <Education />
+        <Experience />
+        <Projects />
+        <GitHubSection />
+        <Certifications />
+        <Achievements />
+        <CodingProfiles />
+        <Resume />
+        <Opportunity />
+        <Contact />
+      </main>
+      <Footer />
+      <ScrollTop />
+    </div>
+  );
+}
