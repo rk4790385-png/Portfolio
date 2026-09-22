@@ -274,7 +274,6 @@ function ProjectDetailPage() {
                                 <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
                                 {project.problemStatement}
                               </li>
-                              </li>
                             </ul>
                           </div>
                           <div className="rounded-[1.75rem] border border-border/70 bg-card/85 p-6">
