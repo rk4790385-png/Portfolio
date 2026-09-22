@@ -272,15 +272,8 @@ function ProjectDetailPage() {
                             <ul className="mt-4 space-y-3 text-sm text-muted-foreground/90">
                               <li className="flex gap-3">
                                 <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                                Clear project discovery and streamlined interaction.
+                                {project.problemStatement}
                               </li>
-                              <li className="flex gap-3">
-                                <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                                A modern interface for real-world user flows.
-                              </li>
-                              <li className="flex gap-3">
-                                <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                                Robust backend handling of data and requests.
                               </li>
                             </ul>
                           </div>
@@ -291,15 +284,15 @@ function ProjectDetailPage() {
                             <ul className="mt-4 space-y-3 text-sm text-muted-foreground/90">
                               <li className="flex gap-3">
                                 <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                                Spacious layout and easy scanning.
+                                {project.stack.join(" · ")}
                               </li>
                               <li className="flex gap-3">
                                 <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                                Thoughtful hierarchy for every panel.
+                                {project.role}
                               </li>
                               <li className="flex gap-3">
                                 <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                                Consistent spacing across screens.
+                                {project.status} · {project.duration}
                               </li>
                             </ul>
                           </div>
@@ -330,9 +323,9 @@ function ProjectDetailPage() {
                               </div>
                             </div>
                             <div className="rounded-3xl bg-background/80 p-4">
-                              Focus
+                              Project type
                               <div className="mt-2 text-lg font-semibold text-foreground">
-                                Premium UX
+                                Web Application
                               </div>
                             </div>
                           </div>
@@ -379,8 +372,7 @@ function ProjectDetailPage() {
                             Summary
                           </h5>
                           <p className="mt-3 text-sm text-muted-foreground/90">
-                            This project addressed key gaps in user experience, data handling,
-                            and interface clarity.
+                            {project.problemStatement}
                           </p>
                         </div>
                       </div>
@@ -405,15 +397,15 @@ function ProjectDetailPage() {
                           <ul className="mt-4 space-y-3 text-sm text-muted-foreground/90">
                             <li className="flex gap-3">
                               <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                              Clean separation of concerns.
+                              {project.stack.join(" · ")}
                             </li>
                             <li className="flex gap-3">
                               <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                              Scalable backend design.
+                              {project.role}
                             </li>
                             <li className="flex gap-3">
                               <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                              Optimized request flow.
+                              {project.status} · {project.duration}
                             </li>
                           </ul>
                         </div>
@@ -429,7 +421,7 @@ function ProjectDetailPage() {
                           className="rounded-[1.75rem] border border-border/70 bg-card/85 p-6 shadow-[0_22px_55px_-35px_rgba(0,0,0,0.45)]"
                         >
                           <h5 className="text-base font-semibold text-foreground">
-                            {feat.substring(0, 30)}...
+                            Feature
                           </h5>
                           <p className="mt-3 text-sm leading-relaxed text-muted-foreground/90">
                             {feat}
