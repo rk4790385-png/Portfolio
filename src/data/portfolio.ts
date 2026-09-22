@@ -129,17 +129,6 @@ export const portfolio = {
       ],
     },
     {
-      group: "Machine Learning",
-      items: [
-        { name: "TensorFlow", proficiency: "Familiar" },
-        { name: "Keras", proficiency: "Familiar" },
-        { name: "OpenCV", proficiency: "Familiar" },
-        { name: "NumPy", proficiency: "Familiar" },
-        { name: "Pandas", proficiency: "Familiar" },
-        { name: "Matplotlib", proficiency: "Familiar" },
-      ],
-    },
-    {
       group: "Developer Tools",
       items: [
         { name: "Git", proficiency: "Intermediate" },
