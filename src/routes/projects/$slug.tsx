@@ -354,32 +354,20 @@ function ProjectDetailPage() {
                   )}
 
                   {activeTab === "Problem" && (
-                    <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-                      <div className="space-y-4">
-                        <div className="rounded-[1.75rem] border border-border/70 bg-card/85 p-6">
-                          <h4 className="text-lg font-semibold text-foreground">
-                            Problem
-                          </h4>
-                          <p className="mt-4 text-sm leading-relaxed text-muted-foreground/90">
-                            {project.problemStatement}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="space-y-4">
-                        <div className="rounded-[1.75rem] border border-border/70 bg-background/80 p-6">
-                          <h5 className="text-sm font-semibold text-foreground">
-                            Summary
-                          </h5>
-                          <p className="mt-3 text-sm text-muted-foreground/90">
-                            {project.problemStatement}
-                          </p>
-                        </div>
+                    <div className="max-w-3xl">
+                      <div className="rounded-[1.75rem] border border-border/70 bg-card/85 p-6">
+                        <h4 className="text-lg font-semibold text-foreground">
+                          Problem
+                        </h4>
+                        <p className="mt-4 text-sm leading-relaxed text-muted-foreground/90">
+                          {project.problemStatement}
+                        </p>
                       </div>
                     </div>
                   )}
 
                   {activeTab === "Architecture" && (
-                    <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+                    <div className="max-w-4xl">
                       <div className="rounded-[1.75rem] border border-border/70 bg-card/85 p-6">
                         <h4 className="text-lg font-semibold text-foreground">
                           Architecture
@@ -387,27 +375,6 @@ function ProjectDetailPage() {
                         <p className="mt-4 text-sm leading-relaxed text-muted-foreground/90">
                           {project.architecture}
                         </p>
-                      </div>
-                      <div className="space-y-4">
-                        <div className="rounded-[1.75rem] border border-border/70 bg-background/80 p-6">
-                          <h5 className="text-sm font-semibold text-foreground">
-                            Structure
-                          </h5>
-                          <ul className="mt-4 space-y-3 text-sm text-muted-foreground/90">
-                            <li className="flex gap-3">
-                              <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                              {project.stack.join(" · ")}
-                            </li>
-                            <li className="flex gap-3">
-                              <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                              {project.role}
-                            </li>
-                            <li className="flex gap-3">
-                              <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                              {project.status} · {project.duration}
-                            </li>
-                          </ul>
-                        </div>
                       </div>
                     </div>
                   )}
