@@ -1,5 +1,5 @@
 import { createFileRoute, useParams, Link } from "@tanstack/react-router";
-import { useEffect, useMemo, useRef } from "react";
+import { useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Github,
@@ -58,41 +58,30 @@ function ProjectNotFound() {
 
 function ProjectDetailPage() {
   const { slug } = useParams({ from: "/projects/$slug" });
-  const project = portfolio.projects.find((p) => p.slug === slug);
+  const allowedProjectSlugs = [
+    "employee-management-system",
+    "campus-placement-portal",
+    "hospital-management-system",
+  ];
+  const project = portfolio.projects.find(
+    (p) => p.slug === slug && allowedProjectSlugs.includes(p.slug),
+  );
   const [activeTab, setActiveTab] = useState("Overview");
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
 
   if (!project) {
     return <ProjectNotFound />;
   }
 
-  const demoUrl = project.demo ?? project.github;
-
   const tabs = [
     "Overview",
     "Problem",
-    "Solution",
     "Architecture",
     "Features",
     "Technology Stack",
     "Challenges",
     "Learnings",
-    "Screenshots",
     "Future Improvements",
   ];
-
-  const screenshotTiles = [
-    "Dashboard Overview",
-    "User Interface",
-    "Data Visualization",
-  ];
-
-  const featureCards = project.features.map((feat, idx) => ({
-    title: feat.split(" ").slice(0, 3).join(" "),
-    description: feat,
-    icon: null,
-  }));
 
   const techGroups = useMemo(() => {
     const groups: Record<string, string[]> = {};
@@ -108,12 +97,6 @@ function ProjectDetailPage() {
     });
     return groups;
   }, [project.stack]);
-
-  useEffect(() => {
-    if (contentRef.current) {
-      contentRef.current.scrollTop = 0;
-    }
-  }, [activeTab]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -169,16 +152,18 @@ function ProjectDetailPage() {
                         <Github className="mr-2 h-4 w-4" /> Source
                       </a>
                     </Button>
-                    <Button
-                      asChild
-                      size="sm"
-                      variant="outline"
-                      className="rounded-full border border-border bg-background/80 px-4 py-2 text-sm text-foreground hover:border-accent/50 hover:text-accent"
-                    >
-                      <a href={demoUrl} target="_blank" rel="noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" /> Demo
-                      </a>
-                    </Button>
+                    {project.demo && (
+                      <Button
+                        asChild
+                        size="sm"
+                        variant="outline"
+                        className="rounded-full border border-border bg-background/80 px-4 py-2 text-sm text-foreground hover:border-accent/50 hover:text-accent"
+                      >
+                        <a href={project.demo} target="_blank" rel="noreferrer">
+                          <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
+                        </a>
+                      </Button>
+                    )}
                     <Button
                       asChild
                       size="sm"
@@ -222,7 +207,6 @@ function ProjectDetailPage() {
 
             {/* Content Area */}
             <div
-              ref={contentRef}
               className="flex-1 min-h-0 overflow-y-auto px-5 pb-6 sm:px-6"
             >
               <AnimatePresence mode="wait">
@@ -403,20 +387,6 @@ function ProjectDetailPage() {
                     </div>
                   )}
 
-                  {activeTab === "Solution" && (
-                    <div className="space-y-6">
-                      <div className="rounded-[1.75rem] border border-border/70 bg-card/85 p-6">
-                        <h4 className="text-lg font-semibold text-foreground">
-                          Solution
-                        </h4>
-                        <p className="mt-4 text-sm leading-relaxed text-muted-foreground/90">
-                          Built as a modern web experience with a premium visual system,
-                          efficient backend support, and intuitive feature sections.
-                        </p>
-                      </div>
-                    </div>
-                  )}
-
                   {activeTab === "Architecture" && (
                     <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
                       <div className="rounded-[1.75rem] border border-border/70 bg-card/85 p-6">
@@ -527,29 +497,6 @@ function ProjectDetailPage() {
                     </div>
                   )}
 
-                  {activeTab === "Screenshots" && (
-                    <div className="space-y-6">
-                      <div className="grid gap-4 lg:grid-cols-3">
-                        {screenshotTiles.map((label) => (
-                          <button
-                            key={label}
-                            type="button"
-                            onClick={() => setPreviewImage(label)}
-                            className="group overflow-hidden rounded-[1.75rem] border border-border/70 bg-slate-950 p-6 text-left transition-transform hover:-translate-y-1"
-                          >
-                            <div className="mb-4 h-40 rounded-3xl bg-gradient-to-br from-primary/15 via-transparent to-secondary/10" />
-                            <div className="text-sm font-semibold text-foreground">
-                              {label}
-                            </div>
-                            <p className="mt-2 text-sm leading-relaxed text-muted-foreground/80">
-                              Tap to preview a polished project screenshot concept.
-                            </p>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
                   {activeTab === "Future Improvements" && (
                     <div className="grid gap-4 sm:grid-cols-2">
                       {project.futureImprovements ? (
@@ -576,45 +523,6 @@ function ProjectDetailPage() {
           </div>
         </motion.div>
 
-        {/* Preview Image Modal */}
-        <AnimatePresence>
-          {previewImage && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 py-6"
-            >
-              <div
-                className="absolute inset-0"
-                onClick={() => setPreviewImage(null)}
-              />
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                className="relative w-full max-w-3xl overflow-hidden rounded-[2rem] border border-border/80 bg-background/95 p-6 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.7)]"
-              >
-                <button
-                  onClick={() => setPreviewImage(null)}
-                  className="absolute right-5 top-5 grid h-11 w-11 place-items-center rounded-full border border-border bg-card/80 text-muted-foreground hover:bg-card hover:text-foreground"
-                >
-                  <X className="h-5 w-5" />
-                </button>
-                <div className="rounded-[1.75rem] border border-border/70 bg-slate-950 p-10 text-center text-sm text-muted-foreground">
-                  <div className="mb-6 text-lg font-semibold text-foreground">
-                    {previewImage}
-                  </div>
-                  <div className="mx-auto h-96 max-w-full rounded-[1.5rem] bg-gradient-to-br from-primary/15 via-transparent to-secondary/15" />
-                  <p className="mt-6 text-sm leading-relaxed text-muted-foreground/80">
-                    This preview represents the project screenshot in a premium
-                    showcase layout.
-                  </p>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </div>
   );
