@@ -49,15 +49,10 @@ export const portfolio = {
   socials: {
     linkedin: "https://www.linkedin.com/in/raj-k-5571372ba",
     github: "https://github.com/rk4790385-png",
-    // TODO: replace with your real LeetCode/HackerRank profile URLs, or remove
-    // these two from codingProfiles below if you don't have active accounts —
-    // a link to the bare homepage instead of your profile reads as fake.
-    leetcode: "https://leetcode.com/",
-    hackerrank: "https://www.hackerrank.com/",
   },
   about: {
     summary:
-      "I am an Artificial Intelligence and Data Science graduate with a strong interest in full-stack software engineering. I've built and deployed four independent projects using React, TypeScript, and Supabase, along with a Python-based machine learning project and a desktop application. I'm currently completing a structured Java Full Stack Development training program to build practical Java and Spring Boot skills, and my goal is to contribute to a software development or QA team where I can keep learning from real engineering practice.",
+      "I am an Artificial Intelligence and Data Science graduate with a strong interest in full-stack software engineering. I've built and deployed multiple independent projects, including three featured web applications and additional Python-based machine learning and desktop projects. I'm currently completing a structured Java Full Stack Development training program to build practical Java and Spring Boot skills, and my goal is to contribute to a software development or QA team where I can keep learning from real engineering practice.",
     highlights: [
       "Building full-stack web applications using React, TypeScript, and Supabase (PostgreSQL)",
       "Proficient in Core Java and object-oriented design principles; currently building practical Spring Boot experience through a structured training program",
@@ -161,7 +156,7 @@ export const portfolio = {
       company: "Independent Learning",
       period: "2026",
       bullets: [
-        "Built and deployed four independent projects using React, TypeScript, Supabase, and Python, while strengthening Java fundamentals and Data Structures & Algorithms.",
+        "Built and deployed multiple independent projects across React, TypeScript, Supabase, and Python while strengthening Java fundamentals and Data Structures & Algorithms.",
       ],
       stack: ["React", "TypeScript", "Supabase", "Python", "Data Structures"],
     },
@@ -254,7 +249,7 @@ export const portfolio = {
     },
     {
       slug: "hospital-management-system",
-      title: "Health-care Management System",
+      title: "Health Management System",
       subtitle: "Healthcare Administration Platform",
       desc: "A full-stack application to coordinate patient records and hospital administration workflows.",
       status: "Completed",
@@ -284,7 +279,7 @@ export const portfolio = {
   certifications: [] as { title: string; issuer: string; date: string; tech: string; link?: string }[],
   achievements: [
     { title: "Academic Excellence", desc: "Completed B.E. in Artificial Intelligence and Data Science with a CGPA of 6.97." },
-    { title: "Project Milestones", desc: "Built and deployed four independent projects: three full-stack web apps (React, TypeScript, Supabase) and a Python-based machine learning application." },
+    { title: "Project Milestones", desc: "Built and deployed multiple independent projects across web development and Python-based machine learning, with three featured projects presented in this portfolio." },
   ],
   codingProfiles: [
     {
@@ -305,7 +300,7 @@ export const portfolio = {
     // specific is worse than no link at all.
   ],
   stats: [
-    { label: "Major Projects", value: "4" },
+    { label: "Featured Projects", value: "3" },
     { label: "Graduate", value: "2026" },
     { label: "Primary Language", value: "TypeScript" },
     { label: "Specialization", value: "AI & DS" },
